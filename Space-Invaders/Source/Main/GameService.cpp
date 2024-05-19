@@ -2,6 +2,8 @@
 #include "../../Header/Graphic/GraphicService.h"
 
 namespace Main {
+	GameState GameService::currentState = GameState::BOOT;
+
 	void GameService::initialize()
 	{
 
@@ -61,4 +63,15 @@ namespace Main {
 		// Returns true if the game window is open, indicating the game is still running
 		return serviceLocator->getGraphicService()->isGameWindowOpen();
 	}
+
+	void GameService::setGameState(GameState newState)
+	{
+		currentState = newState;
+	}
+
+	GameState GameService::getGameState()
+	{
+		return currentState;
+	}
+
 }
