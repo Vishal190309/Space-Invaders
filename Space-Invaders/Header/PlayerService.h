@@ -3,20 +3,14 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "EventService.h"
+#include "Player\PlayerController.h"
 
 class PlayerService {
 
 private:
 	
-	const sf::String texturePath= "assets/textures/player_ship.png";
-	sf::RenderWindow* gameWindow;
-	EventService* eventService;
 	
-
-	void initializePlayerSprite();
-	void ProcessPlayerInput();
-	void moveLeft();
-	void moveRight();
+	PlayerController* playerController;
 
 public:
 
@@ -27,6 +21,4 @@ public:
 	void update();
 	void render();
 
-	int getMoveSpeed();
-	sf::Vector2f getPosition();
 };
