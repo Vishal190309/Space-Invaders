@@ -49,8 +49,10 @@ void GameService::update() {
 void GameService::render() {
 	// Clears the game window with the background color provided by the graphic service
 	gameWindow->clear(serviceLocator->getGraphicService()->getWindowColor());
-	serviceLocator->render(); // Render the current frame using the service locator
-	gameWindow->display(); // Display the rendered frame on the game window
+	serviceLocator->render();
+	gameWindow->display();
+	// Render the current frame using the service locator
+	 // Display the rendered frame on the game window
 }
 
 // Checks if the game is still running by querying the graphic service's window open status.

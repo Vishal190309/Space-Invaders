@@ -39,6 +39,7 @@ void GraphicService::update() {
 }
 
 void GraphicService::render() {
+	
 }
 
 bool GraphicService::isGameWindowOpen() {

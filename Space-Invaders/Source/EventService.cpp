@@ -34,6 +34,16 @@ bool EventService::hasQuitGame() { return (isKeyboardEvent() && pressedEscapeKey
 //checks for if a keyboard key has been pressed
 bool EventService::isKeyboardEvent() { return game_event.type == sf::Event::KeyPressed; }
 
+bool EventService::pressedLeftKey()
+{
+    return game_event.key.code == sf::Keyboard::Left;
+}
+
+bool EventService::pressedRightKey()
+{
+    return game_event.key.code == sf::Keyboard::Right;;
+}
+
 //control click on the SFML functions to see what they do internally
 bool EventService::pressedEscapeKey() { return game_event.key.code == sf::Keyboard::Escape; }
 
