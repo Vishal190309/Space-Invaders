@@ -16,6 +16,7 @@ private:
 
 	void setVideoMode();
 	void onDestroy();
+	const int frameRate = 60;
 
 public:
 

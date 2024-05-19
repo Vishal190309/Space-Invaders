@@ -9,7 +9,7 @@ class PlayerService {
 private:
 	int playerScore = 0;
 	int health = 100;
-	int movementSpeed = 1;
+	float movementSpeed = 350.0f;
 	sf::Vector2f position = sf::Vector2f(200, 100);
 	const sf::String texturePath= "assets/textures/player_ship.png";
 	sf::RenderWindow* gameWindow;
@@ -19,6 +19,8 @@ private:
 
 	void initializePlayerSprite();
 	void ProcessPlayerInput();
+	void moveLeft();
+	void moveRight();
 
 public:
 
@@ -31,5 +33,4 @@ public:
 
 	int getMoveSpeed();
 	sf::Vector2f getPosition();
-	void move(int offsetX);
 };

@@ -32,6 +32,7 @@ sf::RenderWindow* GraphicService::createGameWindow()
 void GraphicService::initialize()
 {
 	gameWindow = createGameWindow();
+	gameWindow->setFramerateLimit(frameRate);
 
 }
 
