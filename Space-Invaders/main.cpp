@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include "Header/GameService.h"
-
+#include "Header/Main/GameService.h"
+using namespace Main;
 //class Player {
 //    
 //private:
