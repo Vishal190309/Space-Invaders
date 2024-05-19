@@ -2,46 +2,48 @@
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Player/PlayerController.h"
 
-void PlayerView::initializePlayerSprite()
-{
-	if (playerTexture.loadFromFile(playerTexturePath)) {
-		playerSprite.setTexture(playerTexture);
-		scalePlayerSprite();
+namespace Player {
+	void PlayerView::initializePlayerSprite()
+	{
+		if (playerTexture.loadFromFile(playerTexturePath)) {
+			playerSprite.setTexture(playerTexture);
+			scalePlayerSprite();
+		}
 	}
-}
 
 
 
-void PlayerView::scalePlayerSprite()
-{
-	playerSprite.setScale(
-		static_cast<float>(playerSpriteWidth) / playerSprite.getTexture()->getSize().x,
-		static_cast<float>(playerSpriteHeight) / playerSprite.getTexture()->getSize().y
-	);
-}
+	void PlayerView::scalePlayerSprite()
+	{
+		playerSprite.setScale(
+			static_cast<float>(playerSpriteWidth) / playerSprite.getTexture()->getSize().x,
+			static_cast<float>(playerSpriteHeight) / playerSprite.getTexture()->getSize().y
+		);
+	}
 
-PlayerView::PlayerView()
-{
-	
-}
+	PlayerView::PlayerView()
+	{
 
-PlayerView::~PlayerView()
-{
-}
+	}
 
-void PlayerView::initialize(PlayerController* controller)
-{
-	playerController = controller;
-	gameWindow = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-	initializePlayerSprite();
-}
+	PlayerView::~PlayerView()
+	{
+	}
 
-void PlayerView::update()
-{
-	playerSprite.setPosition(playerController->getPlayerPosition());
-}
+	void PlayerView::initialize(PlayerController* controller)
+	{
+		playerController = controller;
+		gameWindow = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+		initializePlayerSprite();
+	}
 
-void PlayerView::render()
-{
-	gameWindow->draw(playerSprite);
+	void PlayerView::update()
+	{
+		playerSprite.setPosition(playerController->getPlayerPosition());
+	}
+
+	void PlayerView::render()
+	{
+		gameWindow->draw(playerSprite);
+	}
 }

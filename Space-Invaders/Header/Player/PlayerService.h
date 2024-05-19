@@ -3,22 +3,25 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "../../Header/Event/EventService.h"
-class PlayerController;
 
-class PlayerService {
+namespace Player {
+	class PlayerController;
 
-private:
-	
-	
-	PlayerController* playerController;
+	class PlayerService {
 
-public:
+	private:
 
-	PlayerService();
-	~PlayerService();
 
-	void initialize();
-	void update();
-	void render();
+		PlayerController* playerController;
 
-};
+	public:
+
+		PlayerService();
+		~PlayerService();
+
+		void initialize();
+		void update();
+		void render();
+
+	};
+}

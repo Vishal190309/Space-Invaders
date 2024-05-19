@@ -1,80 +1,83 @@
 #include "../../Header/Global/ServiceLocator.h"
 
-ServiceLocator::ServiceLocator()
-{
-	graphicService = nullptr;
-	eventService = nullptr;
-	playerService = nullptr;
-	timeService = nullptr;
-	createServices();
-}
+namespace Global {
+	using namespace Player;
+	ServiceLocator::ServiceLocator()
+	{
+		graphicService = nullptr;
+		eventService = nullptr;
+		playerService = nullptr;
+		timeService = nullptr;
+		createServices();
+	}
 
-ServiceLocator::~ServiceLocator()
-{
-	clearAllServices();
-}
+	ServiceLocator::~ServiceLocator()
+	{
+		clearAllServices();
+	}
 
-void ServiceLocator::createServices()
-{
-	graphicService = new GraphicService();
-	eventService = new EventService();
-	playerService = new PlayerService();
-	timeService = new TimeService();
-}
+	void ServiceLocator::createServices()
+	{
+		graphicService = new GraphicService();
+		eventService = new Event::EventService();
+		playerService = new PlayerService();
+		timeService = new TimeService();
+	}
 
-void ServiceLocator::clearAllServices()
-{
-	delete(graphicService);
-	delete(eventService);
-	delete(playerService);
-	delete(timeService);
-}
+	void ServiceLocator::clearAllServices()
+	{
+		delete(graphicService);
+		delete(eventService);
+		delete(playerService);
+		delete(timeService);
+	}
 
-ServiceLocator* ServiceLocator::getInstance()
-{
-	static ServiceLocator instance;
-	return &instance;
-}
+	ServiceLocator* ServiceLocator::getInstance()
+	{
+		static ServiceLocator instance;
+		return &instance;
+	}
 
-void ServiceLocator::initialize()
-{	
-	graphicService->initialize();
-	eventService->initialize();
-	playerService->initialize();
-	timeService->initialize();
-}
+	void ServiceLocator::initialize()
+	{
+		graphicService->initialize();
+		eventService->initialize();
+		playerService->initialize();
+		timeService->initialize();
+	}
 
-void ServiceLocator::update()
-{
-	graphicService->update();
-	eventService->update();
-	playerService->update();
-	timeService->update();
-}
+	void ServiceLocator::update()
+	{
+		graphicService->update();
+		eventService->update();
+		playerService->update();
+		timeService->update();
+	}
 
-void ServiceLocator::render()
-{
-	graphicService->render();
-	playerService->render();
+	void ServiceLocator::render()
+	{
+		graphicService->render();
+		playerService->render();
 
-}
+	}
 
-EventService* ServiceLocator::getEventService()
-{
-	return eventService;
-}
+	Event::EventService* ServiceLocator::getEventService()
+	{
+		return eventService;
+	}
 
-GraphicService* ServiceLocator::getGraphicService()
-{
-	return graphicService;
-}
+	GraphicService* ServiceLocator::getGraphicService()
+	{
+		return graphicService;
+	}
 
-PlayerService* ServiceLocator::getPlayerService()
-{
-	return playerService;
-}
+	PlayerService* ServiceLocator::getPlayerService()
+	{
+		return playerService;
+	}
 
-TimeService* ServiceLocator::getTimeService()
-{
-	return timeService;
+	TimeService* ServiceLocator::getTimeService()
+	{
+		return timeService;
+	}
 }
