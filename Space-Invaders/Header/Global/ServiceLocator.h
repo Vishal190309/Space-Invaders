@@ -1,9 +1,8 @@
 #pragma once
-#include "../Header/GraphicService.h"
-#include "../Header/EventService.h"
-#include "../Header/PlayerService.h"
-#include "TimeService.h"
-
+#include "../../Header/Graphic/GraphicService.h"
+#include "../../Header/Event/EventService.h"
+#include "../../Header/Player/PlayerService.h"
+#include "../Time/TimeService.h"
 // ServiceLocator Class Summary: This class manages access to various services in the application.
 // include relevant headers files
 

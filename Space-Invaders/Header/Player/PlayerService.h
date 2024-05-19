@@ -2,8 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include "EventService.h"
-#include "Player\PlayerController.h"
+#include "../../Header/Event/EventService.h"
+class PlayerController;
 
 class PlayerService {
 

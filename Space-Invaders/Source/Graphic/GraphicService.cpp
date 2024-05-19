@@ -1,4 +1,4 @@
-#include "../Header/GraphicService.h"
+#include "../../Header/Graphic/GraphicService.h"
 
 void GraphicService::setVideoMode()
 {

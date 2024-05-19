@@ -1,8 +1,8 @@
 #pragma once
-#include "PlayerModel.h"
-#include "PlayerView.h"
-#include <SFML/Graphics.hpp>
 
+#include <SFML/Graphics.hpp>
+class PlayerView;
+class PlayerModel;
 class PlayerController {
 
 private:
