@@ -64,6 +64,7 @@ namespace Global {
 		graphicService->render();
 		playerService->render();
 		uiService->render();
+		
 
 	}
 
