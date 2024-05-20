@@ -76,6 +76,7 @@ namespace Enemy {
 	}
 	void EnemyController::initialize()
 	{
+		
 		enemyModel->initialize();
 		enemyView->initialize(this);
 	}

@@ -24,7 +24,7 @@ namespace Enemy {
 		const sf::Vector2f leftMostPosition = sf::Vector2f(50.f, 950.f);
 		const sf::Vector2f RightMostPosition = sf::Vector2f(1800.f, 950.f);
 
-		const float  DownMoveDistance = 100.f;
+		const float  DownMoveDistance = 60.f;
 		const float enemyMovementSpeed = 250.f;
 
 
