@@ -9,7 +9,10 @@ namespace Enemy {
 		EnemyView* enemyView;
 		EnemyModel* enemyModel;
 
-
+		void move();
+		void moveLeft();
+		void moveRight();
+		void moveDown();
 	public:
 		EnemyController();
 		~EnemyController();
@@ -18,5 +21,7 @@ namespace Enemy {
 		void update();
 		void render();
 		sf::Vector2f getEnemyPosition();
+
+		
 	};
 }
