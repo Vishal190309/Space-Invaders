@@ -17,6 +17,8 @@ namespace Main {
 		void destroy();
 		static GameState currentState;
 
+		void showMainMenu();
+
 	public:
 		GameService();
 
@@ -26,9 +28,9 @@ namespace Main {
 		void render();
 		bool isRunning();
 
-		void setGameState(GameState newState);
+		static void setGameState(GameState newState);
 
-		GameState getGameState();
+		static GameState getGameState();
 
 	};
 }

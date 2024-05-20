@@ -27,6 +27,7 @@ namespace UI
 
         void MainMenuUIController::update()
         {
+            processButtonInteractions();
         }
 
         void MainMenuUIController::render()
@@ -102,6 +103,26 @@ namespace UI
             playButtonSprite.setPosition(xPosition, 500.0f);
             instructionButtonSprite.setPosition(xPosition, 700.0f);
             quitButtonSprite.setPosition(xPosition, 900.0f);
+        }
+
+        void MainMenuUIController::processButtonInteractions()
+        {
+            sf::Vector2f mousePosition = sf::Vector2f(sf::Mouse::getPosition(*gameWindow));
+            if (clickedButton(&playButtonSprite, mousePosition)) {
+                GameService::setGameState(GameState::GAMEPLAY);
+            }
+            if (clickedButton(&instructionButtonSprite, mousePosition)) {
+                printf("Clicked instruction button\n");
+            }
+            if (clickedButton(&quitButtonSprite, mousePosition)) {
+                gameWindow->close();
+            }
+        }
+
+        bool MainMenuUIController::clickedButton(sf::Sprite* buttonSprite, sf::Vector2f mousePosition)
+        {
+            EventService* eventService = ServiceLocator::getInstance()->getEventService();
+            return eventService->pressedLeftMouseButton() &&  buttonSprite->getGlobalBounds().contains(mousePosition);
         }
 
     }

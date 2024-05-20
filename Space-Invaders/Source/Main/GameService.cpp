@@ -9,6 +9,7 @@ namespace Main {
 
 		serviceLocator->initialize();
 		initializeVariable();
+		showMainMenu();
 
 	}
 
@@ -19,6 +20,11 @@ namespace Main {
 
 	void GameService::destroy()
 	{
+	}
+
+	void GameService::showMainMenu()
+	{
+		setGameState(GameState::MAIN_MENU);
 	}
 
 	// Constructor: Initializes pointers to null.
