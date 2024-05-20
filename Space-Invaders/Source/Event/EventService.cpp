@@ -3,6 +3,44 @@
 #include "../../Header/Graphic/GraphicService.h"
 
 namespace Event {
+    void EventService::updateMouseButtonsState(ButtonState& currentButtonState, sf::Mouse::Button mouseButton)
+    {
+        if(sf::Mouse::isButtonPressed(mouseButton)){
+
+            switch (currentButtonState)
+            {
+            case ButtonState::RELEASED:
+                currentButtonState = ButtonState::PRESSED;
+                break;
+            case ButtonState::PRESSED:
+                currentButtonState = ButtonState::HELD;
+                break;
+            }
+
+        }
+        else {
+            currentButtonState = ButtonState::RELEASED;
+        }
+    }
+    void EventService::updateKeyboardButtonsState(ButtonState& currentButtonState, sf::Keyboard::Key keyboardButton)
+    {
+        if (sf::Keyboard::isKeyPressed(keyboardButton)) {
+
+            switch (currentButtonState)
+            {
+            case ButtonState::RELEASED:
+                currentButtonState = ButtonState::PRESSED;
+                break;
+            case ButtonState::PRESSED:
+                currentButtonState = ButtonState::HELD;
+                break;
+            }
+
+        }
+        else {
+            currentButtonState = ButtonState::RELEASED;
+        }
+    }
     EventService::EventService() { game_window = nullptr; }
 
     EventService::~EventService() = default; //calls the default destructor
@@ -14,7 +52,12 @@ namespace Event {
 
     void EventService::update()
     {
-        //for later
+        updateMouseButtonsState(LeftMouseButtonState,sf::Mouse::Left);
+        updateMouseButtonsState(RightMouseButtonState, sf::Mouse::Right);
+        updateKeyboardButtonsState(LeftButtonState, sf::Keyboard::Left);
+        updateKeyboardButtonsState(RightButtonState, sf::Keyboard::Right);
+        updateKeyboardButtonsState(AButtonState, sf::Keyboard::A);
+        updateKeyboardButtonsState(DButtonState, sf::Keyboard::D);
     }
 
     void EventService::processEvents()
@@ -37,22 +80,32 @@ namespace Event {
 
     bool EventService::pressedLeftKey()
     {
-        return game_event.key.code == sf::Keyboard::Left;
+        return LeftButtonState == ButtonState::HELD;
     }
 
     bool EventService::pressedRightKey()
     {
-        return game_event.key.code == sf::Keyboard::Right;;
+        return RightButtonState == ButtonState::HELD;
     }
 
     bool EventService::pressedLeftMouseButton()
     {
-        return game_event.type == sf::Event::MouseButtonPressed && game_event.mouseButton.button == sf::Mouse::Left;
+        return LeftMouseButtonState == ButtonState::PRESSED;
     }
 
     bool EventService::pressedRightMouseButton()
     {
-        return game_event.type == sf::Event::MouseButtonPressed && game_event.mouseButton.button == sf::Mouse::Right;
+        return RightMouseButtonState == ButtonState::PRESSED;
+    }
+
+    bool EventService::pressedAKey()
+    {
+        return AButtonState == ButtonState::HELD;
+    }
+
+    bool EventService::pressedDKey()
+    {
+        return  DButtonState == ButtonState::HELD;
     }
 
     //control click on the SFML functions to see what they do internally
