@@ -7,8 +7,8 @@ namespace Graphic {
 		const std::string game_window_title = "Test";
 
 
-		int game_window_width = 800;
-		int game_window_height = 600;
+		int game_window_width = 1920;
+		int game_window_height = 1080;
 
 		sf::Color windowColor = sf::Color::Blue;
 

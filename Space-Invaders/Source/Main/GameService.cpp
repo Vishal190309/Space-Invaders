@@ -2,11 +2,14 @@
 #include "../../Header/Graphic/GraphicService.h"
 
 namespace Main {
+	GameState GameService::currentState = GameState::BOOT;
+
 	void GameService::initialize()
 	{
 
 		serviceLocator->initialize();
 		initializeVariable();
+		showMainMenu();
 
 	}
 
@@ -17,6 +20,11 @@ namespace Main {
 
 	void GameService::destroy()
 	{
+	}
+
+	void GameService::showMainMenu()
+	{
+		setGameState(GameState::MAIN_MENU);
 	}
 
 	// Constructor: Initializes pointers to null.
@@ -61,4 +69,15 @@ namespace Main {
 		// Returns true if the game window is open, indicating the game is still running
 		return serviceLocator->getGraphicService()->isGameWindowOpen();
 	}
+
+	void GameService::setGameState(GameState newState)
+	{
+		currentState = newState;
+	}
+
+	GameState GameService::getGameState()
+	{
+		return currentState;
+	}
+
 }

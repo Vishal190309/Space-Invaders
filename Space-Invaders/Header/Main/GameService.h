@@ -3,6 +3,11 @@
 #include "SFML/Graphics.hpp"
 
 namespace Main {
+	enum class GameState {
+		BOOT,
+		MAIN_MENU,
+		GAMEPLAY
+	};
 	class GameService {
 	private:
 		Global::ServiceLocator* serviceLocator;
@@ -10,6 +15,9 @@ namespace Main {
 		void initialize();
 		void initializeVariable();
 		void destroy();
+		static GameState currentState;
+
+		void showMainMenu();
 
 	public:
 		GameService();
@@ -19,6 +27,10 @@ namespace Main {
 		void update();
 		void render();
 		bool isRunning();
+
+		static void setGameState(GameState newState);
+
+		static GameState getGameState();
 
 	};
 }
