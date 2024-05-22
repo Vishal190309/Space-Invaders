@@ -122,7 +122,8 @@ namespace UI
         bool MainMenuUIController::clickedButton(sf::Sprite* buttonSprite, sf::Vector2f mousePosition)
         {
             EventService* eventService = ServiceLocator::getInstance()->getEventService();
-            return eventService->pressedLeftMouseButton() &&  buttonSprite->getGlobalBounds().contains(mousePosition);
+          
+            return eventService->pressedLeftMouseButton() && buttonSprite->getGlobalBounds().contains(gameWindow->mapPixelToCoords(static_cast<sf::Vector2i> (mousePosition)));
         }
 
     }
