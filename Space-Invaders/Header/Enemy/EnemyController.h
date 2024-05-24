@@ -9,15 +9,15 @@ namespace Enemy {
 		EnemyView* enemyView;
 		EnemyModel* enemyModel;
 
-		void move();
+		virtual void move();
 		void moveLeft();
 		void moveRight();
 		void moveDown();
 	public:
 		EnemyController();
-		~EnemyController();
+		virtual ~EnemyController();
 
-		void initialize();
+		virtual void initialize();
 		void update();
 		void render();
 		sf::Vector2f getEnemyPosition();

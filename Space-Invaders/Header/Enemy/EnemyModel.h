@@ -2,19 +2,19 @@
 #include <SFML/Graphics.hpp>
 
 namespace Enemy {
-	enum class MovementDirection {
-		Left,
-		Right,
-		Down
-	};
+	enum class EnemyType;
+	enum class MovementDirection;
+	enum class EnemyState;
 	class EnemyModel {
 	private:
 		sf::Vector2f enemyPosition;
 		sf::Vector2f referencePosition= sf::Vector2f(50.f, 50.f);;
 		MovementDirection enemyMovementDirection;
+		EnemyType enemyType;
+		EnemyState enemyState;
 		
 	public:
-		EnemyModel();
+		EnemyModel(EnemyType);
 		~EnemyModel();
 
 		void initialize();
@@ -36,6 +36,12 @@ namespace Enemy {
 
 		MovementDirection getEnemyMovementDirection();
 		void setEnemyMovementDirection(MovementDirection newMovementDirection);
+
+		EnemyType getEnemyType();
+		void setEnemyType(EnemyType Type);
+
+		EnemyState getEnemyState();
+		void setEnemyState(EnemyState State);
 
 	};
 }
