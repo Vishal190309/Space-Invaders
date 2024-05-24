@@ -1,11 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../Global/Config.h"
 namespace Element {
 	namespace Bunker {
 		class BunkerController;
 		class BunkerView {
 		private:
-			const sf::String bunkerTexturePath = "assets/textures/bunker.png";
 			const float width = 80.f;
 			const float height = 80.f;
 			

@@ -6,9 +6,7 @@ namespace Enemy {
 	enum class EnemyType;
 	class EnemyView {
 	private:
-		const sf::String subzeroTexturePath = "assets/textures/subzero.png";
-		const sf::String zapperTexturePath = "assets/textures/zapper.png";
-		const sf::String thunderSnakeTexturePath = "assets/textures/thunder_snake.png";
+		
 		const float enemyWidth = 50.f;
 		const float enemyHeight = 50.f;
 

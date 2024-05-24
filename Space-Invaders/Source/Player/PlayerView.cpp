@@ -1,11 +1,12 @@
 #include "../../Header/Player/PlayerView.h"
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Player/PlayerController.h"
+#include "../../Header/Global/Config.h"
 
 namespace Player {
 	void PlayerView::initializePlayerSprite()
 	{
-		if (playerTexture.loadFromFile(playerTexturePath)) {
+		if (playerTexture.loadFromFile(Global::Config::playerTexturePath)) {
 			playerSprite.setTexture(playerTexture);
 			scalePlayerSprite();
 		}

@@ -1,11 +1,13 @@
 #include "../../../Header/Element/Bunker/BunkerView.h"
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Element/Bunker/BunkerController.h"
+#include "../../../Header/Global/Config.h"
 namespace Element {
+	using namespace Global;
 	namespace Bunker {
 		void BunkerView::initializeImage()
 		{
-			if (bunkerTexture.loadFromFile(bunkerTexturePath)) {
+			if (bunkerTexture.loadFromFile(Config::bunkerTexturePath)) {
 				bunkerSprite.setTexture(bunkerTexture);
 				scaleSprite();
 			}

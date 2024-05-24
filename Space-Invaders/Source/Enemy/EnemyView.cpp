@@ -1,6 +1,7 @@
 #include "../../Header/Enemy/EnemyView.h"
 #include "../../Header/Enemy/EnemyController.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Global/Config.h"
 #include "../../Header/Enemy/EnemyConfig.h"
 namespace Enemy {
 	using namespace Global;
@@ -8,19 +9,19 @@ namespace Enemy {
 	{
 		switch (type) {
 		case EnemyType::SUBZERO:
-			if (enemyTexture.loadFromFile(subzeroTexturePath)) {
+			if (enemyTexture.loadFromFile(Config::subzeroTexturePath)) {
 				enemySprite.setTexture(enemyTexture);
 				scaleSprite();
 			}
 			break;
 		case EnemyType::ZAPPER:
-			if (enemyTexture.loadFromFile(zapperTexturePath)) {
+			if (enemyTexture.loadFromFile(Config::zapperTexturePath)) {
 				enemySprite.setTexture(enemyTexture);
 				scaleSprite();
 			}
 			break;
 		case EnemyType::THUNDER_SNAKE:
-			if (enemyTexture.loadFromFile(thunderSnakeTexturePath)) {
+			if (enemyTexture.loadFromFile(Config::thunderSnakeTexturePath)) {
 				enemySprite.setTexture(enemyTexture);
 				scaleSprite();
 			}
