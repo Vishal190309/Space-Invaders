@@ -1,33 +1,34 @@
 #include "../../Header/Enemy/EnemyController.h"
 #include "../../Header/Enemy/EnemyView.h"
 #include "../../Header/Enemy/EnemyModel.h"
+#include "../../Header/Enemy/EnemyConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
 
 namespace Enemy {
 	using namespace Global;
-	void EnemyController::move()
+	/*void EnemyController::move()
 	{
 		switch (enemyModel->getEnemyMovementDirection())
 		{
-		case MovementDirection::Left:
+		case MovementDirection::LEFT:
 			moveLeft();
 			break;
-		case MovementDirection::Right:
+		case MovementDirection::RIGHT:
 			moveRight();
 			break;
-		case MovementDirection::Down:
+		case MovementDirection::DOWN:
 			moveDown();
 			break;
 
 		}
-	}
+	}*/
 	void EnemyController::moveLeft()
 	{
 		sf::Vector2f currentPosition = enemyModel->getEnemyPosition();
 		currentPosition.x -= (enemyModel->enemyMovementSpeed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime());
 		if (currentPosition.x < enemyModel->leftMostPosition.x) {
 			enemyModel->setReferencePosition(currentPosition);
-			enemyModel->setEnemyMovementDirection(MovementDirection::Down);
+			enemyModel->setEnemyMovementDirection(MovementDirection::DOWN);
 		}
 		else {
 			enemyModel->setEnemyPosition(currentPosition);
@@ -39,7 +40,7 @@ namespace Enemy {
 		currentPosition.x += (enemyModel->enemyMovementSpeed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime());
 		if (currentPosition.x > enemyModel->RightMostPosition.x) {
 			enemyModel->setReferencePosition(currentPosition);
-			enemyModel->setEnemyMovementDirection(MovementDirection::Down);
+			enemyModel->setEnemyMovementDirection(MovementDirection::DOWN);
 		}
 		else {
 			enemyModel->setEnemyPosition(currentPosition);
@@ -51,10 +52,10 @@ namespace Enemy {
 		currentPosition.y += (enemyModel->enemyMovementSpeed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime());
 		if (currentPosition.y > enemyModel->getReferencePosition().y + enemyModel->DownMoveDistance) {
 			if(enemyModel->getReferencePosition().x <= enemyModel->leftMostPosition.x){
-				enemyModel->setEnemyMovementDirection(MovementDirection::Right);
+				enemyModel->setEnemyMovementDirection(MovementDirection::RIGHT);
 			}
 			else if (enemyModel->getReferencePosition().x >= enemyModel->RightMostPosition.x) {
-				enemyModel->setEnemyMovementDirection(MovementDirection::Left);
+				enemyModel->setEnemyMovementDirection(MovementDirection::LEFT);
 			}
 			
 		}
