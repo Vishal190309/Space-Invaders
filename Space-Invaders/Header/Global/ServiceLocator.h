@@ -7,6 +7,7 @@
 #include "../Enemy/EnemyService.h"
 #include "../../Header/Gameplay/GameplayService.h"
 #include "../../Header/Element/ElementService.h"
+#include "../../Header/Sound/SoundService.h"
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
 // include relevant headers files
@@ -19,6 +20,7 @@ namespace Global {
     using namespace Enemy;
     using namespace Gameplay;
     using namespace Element;
+    using namespace Sound;
     class ServiceLocator
     {
     private:
@@ -32,6 +34,7 @@ namespace Global {
         EnemyService* enemyService;
         TimeService* timeService;
         UIService* uiService;
+        SoundService* soundService;
        
         // ..........................
         // ..........................
@@ -67,6 +70,7 @@ namespace Global {
         EnemyService* getEnemyService();
         TimeService* getTimeService();
         UIService* getUIService();
+        SoundService* getSoundService();
        
 
     };

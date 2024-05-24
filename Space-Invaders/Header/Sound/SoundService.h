@@ -6,7 +6,7 @@ namespace Sound {
 	};
 	class SoundService {
 	private:
-		const int volume = 30.f;
+		const int volume = 30;
 
 
 		sf::Music backgroundMusic;

@@ -33,6 +33,7 @@ namespace Global {
 		enemyService = new EnemyService();
 		timeService = new TimeService();
 		uiService = new UIService();
+		soundService = new SoundService();
 		
 ;	}
 
@@ -46,6 +47,7 @@ namespace Global {
 		delete(enemyService);
 		delete(timeService);
 		delete(uiService);
+		delete(soundService);
 	}
 
 	ServiceLocator* ServiceLocator::getInstance()
@@ -64,6 +66,7 @@ namespace Global {
 		enemyService->initialize();
 		timeService->initialize();
 		uiService->initialize();
+		soundService->initialize();
 	}
 
 	void ServiceLocator::update()
@@ -126,6 +129,10 @@ namespace Global {
 	UIService* ServiceLocator::getUIService()
 	{
 		return uiService;
+	}
+	SoundService* ServiceLocator::getSoundService()
+	{
+		return soundService;
 	}
 	GameplayService* ServiceLocator::getGameplayService()
 	{
