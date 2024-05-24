@@ -1,6 +1,7 @@
 #include "../../Header/Enemy/EnemyView.h"
 #include "../../Header/Enemy/EnemyController.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Enemy/EnemyConfig.h"
 namespace Enemy {
 	using namespace Global;
 	void EnemyView::initializeSprite(EnemyType type)
@@ -19,9 +20,14 @@ namespace Enemy {
 			}
 			break;
 		case EnemyType::THUNDER_SNAKE:
+			if (enemyTexture.loadFromFile(thunderSnakeTexturePath)) {
+				enemySprite.setTexture(enemyTexture);
+				scaleSprite();
+			}
 			break;
+		/*
 		case EnemyType::UFO :
-			break;
+			break;*/
 		}
 		
 	}
@@ -53,6 +59,8 @@ namespace Enemy {
 	}
 	void EnemyView::render()
 	{
-		gameWindow->draw(enemySprite);
+		if (gameWindow) {
+			gameWindow->draw(enemySprite);
+		}
 	}
 }

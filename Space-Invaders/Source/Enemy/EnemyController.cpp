@@ -22,7 +22,7 @@ namespace Enemy {
 
 		}
 	}*/
-	void EnemyController::moveLeft()
+	/*void EnemyController::moveLeft()
 	{
 		sf::Vector2f currentPosition = enemyModel->getEnemyPosition();
 		currentPosition.x -= (enemyModel->enemyMovementSpeed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime());
@@ -62,6 +62,25 @@ namespace Enemy {
 		else {
 			enemyModel->setEnemyPosition(currentPosition);
 		}
+	}*/
+	sf::Vector2f EnemyController::getRandomInitialPosition()
+	{
+		float xOffsetDistance = (std::rand() % static_cast<int>(enemyModel->rightMostPosition.x - enemyModel->leftMostPosition.x));
+		float xPosition = enemyModel->leftMostPosition.x + xOffsetDistance;
+		float yPosition = enemyModel->leftMostPosition.y;
+		return sf::Vector2f(xPosition, yPosition);
+	}
+	void EnemyController::handleOutOfBounds()
+	{
+		sf::Vector2f enemyPosition = getEnemyPosition();
+		sf::Vector2u windowSize = ServiceLocator::getInstance()->getGraphicService()->getGameWindow()->getSize();
+
+		// Destroy the enemy if it goes out of bounds.
+		if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
+			enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
+		{
+			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+		}
 	}
 	EnemyController::EnemyController(EnemyType type)
 	{
@@ -77,23 +96,31 @@ namespace Enemy {
 	}
 	void EnemyController::initialize()
 	{
-		
+		enemyModel->setReferencePosition(getRandomInitialPosition());
 		enemyModel->initialize();
 		enemyView->initialize(this);
+		
 	}
 	void EnemyController::update()
 	{
 		move();
 		enemyView->update();
+		handleOutOfBounds();
 
 	}
 	void EnemyController::render()
 	{
+		if(enemyView){
 		enemyView->render();
+		}
 	}
 	sf::Vector2f EnemyController::getEnemyPosition()
 	{
 		return enemyModel->getEnemyPosition();
+	}
+	EnemyState EnemyController::getEnemyState()
+	{
+		return EnemyState();
 	}
 	EnemyType EnemyController::getEnemyType()
 	{

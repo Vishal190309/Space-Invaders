@@ -8,11 +8,12 @@ namespace Enemy {
 	}
 	EnemyModel::~EnemyModel()
 	{
+	
 	}
 	void EnemyModel::initialize()
 	{
 		enemyState = EnemyState::PATROLLING;
-		enemyPosition = referencePosition;
+		enemyPosition = referencePosition ;
 		enemyMovementDirection = MovementDirection::RIGHT;
 	}
 	void EnemyModel::reset()
