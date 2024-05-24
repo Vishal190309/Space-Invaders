@@ -13,8 +13,8 @@ namespace Element {
 		void BunkerView::scaleSprite()
 		{
 			bunkerSprite.setScale(
-				width / bunkerTexture.getSize().x,
-				height / bunkerTexture.getSize().y
+				width / bunkerSprite.getTexture()->getSize().x,
+				height / bunkerSprite.getTexture()->getSize().y
 			);
 		}
 		BunkerView::BunkerView()

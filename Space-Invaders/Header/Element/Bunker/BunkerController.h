@@ -7,7 +7,7 @@ namespace Element {
 		class BunkerController {
 		private:
 			BunkerView* bunkerView;
-			BunkerData* bunkerData;
+			BunkerData bunkerData;
 
 		public:
 			BunkerController();

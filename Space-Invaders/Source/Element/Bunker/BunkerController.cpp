@@ -13,7 +13,7 @@ namespace Element {
 		}
 		void BunkerController::initialize(BunkerData data)
 		{
-			bunkerData = &data;
+			bunkerData = data;
 			bunkerView->initialize(this);
 		}
 		void BunkerController::update()
@@ -26,7 +26,7 @@ namespace Element {
 		}
 		sf::Vector2f BunkerController::getPosition()
 		{
-			return bunkerData->position;
+			return bunkerData.position;
 		}
 		
 	}
