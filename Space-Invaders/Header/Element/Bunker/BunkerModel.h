@@ -1,8 +1,13 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 namespace Element {
 	namespace Bunker {
-		class BunkerModel {
-
+		struct  BunkerData
+		{
+			sf::Vector2f position;
+			BunkerData();
+			BunkerData(sf::Vector2f position);
 		};
+		
 	}
 }
