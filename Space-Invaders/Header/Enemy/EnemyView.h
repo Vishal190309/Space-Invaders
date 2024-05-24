@@ -1,10 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../Header/Enemy/EnemyConfig.h"
 namespace Enemy {
 	class EnemyController;
 	class EnemyView {
 	private:
-		const sf::String enemyTexturePath = "assets/textures/thunder_snake.png";
+		const sf::String subzeroTexturePath = "assets/textures/subzero.png";
+		const sf::String zapperTexturePath = "assets/textures/zapper.png";
 		const float enemyWidth = 50.f;
 		const float enemyHeight = 50.f;
 
@@ -13,7 +15,7 @@ namespace Enemy {
 
 		EnemyController* enemyController;
 		sf::RenderWindow* gameWindow;
-		void initializeSprite();
+		void initializeSprite(EnemyType type);
 		void scaleSprite();
 	public:
 		EnemyView();

@@ -3,12 +3,27 @@
 #include "../../Header/Global/ServiceLocator.h"
 namespace Enemy {
 	using namespace Global;
-	void EnemyView::initializeSprite()
+	void EnemyView::initializeSprite(EnemyType type)
 	{
-		if (enemyTexture.loadFromFile(enemyTexturePath)){
-			enemySprite.setTexture(enemyTexture);
-			scaleSprite();
+		switch (type) {
+		case EnemyType::SUBZERO:
+			if (enemyTexture.loadFromFile(subzeroTexturePath)) {
+				enemySprite.setTexture(enemyTexture);
+				scaleSprite();
+			}
+			break;
+		case EnemyType::ZAPPER:
+			if (enemyTexture.loadFromFile(zapperTexturePath)) {
+				enemySprite.setTexture(enemyTexture);
+				scaleSprite();
+			}
+			break;
+		case EnemyType::THUNDER_SNAKE:
+			break;
+		case EnemyType::UFO :
+			break;
 		}
+		
 	}
 	void EnemyView::scaleSprite()
 	{
@@ -29,7 +44,7 @@ namespace Enemy {
 	{
 		this->enemyController = enemyController;
 		gameWindow = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-		initializeSprite();
+		initializeSprite(this->enemyController->getEnemyType());
 
 	}
 	void EnemyView::update()

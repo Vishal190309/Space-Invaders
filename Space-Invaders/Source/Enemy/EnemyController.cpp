@@ -63,9 +63,9 @@ namespace Enemy {
 			enemyModel->setEnemyPosition(currentPosition);
 		}
 	}
-	EnemyController::EnemyController()
+	EnemyController::EnemyController(EnemyType type)
 	{
-		enemyModel = new EnemyModel();
+		enemyModel = new EnemyModel(type);
 		enemyView = new EnemyView();
 		
 		
@@ -94,5 +94,9 @@ namespace Enemy {
 	sf::Vector2f EnemyController::getEnemyPosition()
 	{
 		return enemyModel->getEnemyPosition();
+	}
+	EnemyType EnemyController::getEnemyType()
+	{
+		return enemyModel->getEnemyType();
 	}
 }
