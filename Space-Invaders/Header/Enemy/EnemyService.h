@@ -7,7 +7,7 @@ namespace Enemy {
 	class EnemyService {
 	private:
 		std::vector<EnemyController*> enemyList;
-		const float spawnDelay = 3f;
+		const float spawnDelay = 1.5f;
 		float spawnTimer;
 		void udpateSpawnTimer();
 		void processEnemySpawn();
