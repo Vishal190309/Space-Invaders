@@ -1,11 +1,12 @@
 #include "../../Header/Gameplay/GameplayView.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Global/Config.h"
 
 namespace Gameplay {
 	using namespace Global;
 	void GameplayView::initializeBgSprite()
 	{
-		if (bgTexture.loadFromFile(bgTexturePath)) {
+		if (bgTexture.loadFromFile(Config::backgroundTexturePath)) {
 			bgSprite.setTexture(bgTexture);
 			scaleBgSprite();
 		}

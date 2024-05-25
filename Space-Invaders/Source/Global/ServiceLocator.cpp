@@ -10,6 +10,7 @@ namespace Global {
 		eventService = nullptr;
 		gameplayService = nullptr;
 		playerService = nullptr;
+		elementService = nullptr;
 		enemyService = nullptr;
 		timeService = nullptr;
 		uiService = nullptr;
@@ -28,9 +29,11 @@ namespace Global {
 		eventService = new Event::EventService();
 		gameplayService = new GameplayService();
 		playerService = new PlayerService();
+		elementService = new ElementService();
 		enemyService = new EnemyService();
 		timeService = new TimeService();
 		uiService = new UIService();
+		soundService = new SoundService();
 		
 ;	}
 
@@ -40,9 +43,11 @@ namespace Global {
 		delete(eventService);
 		delete(gameplayService);
 		delete(playerService);
+		delete(elementService);
 		delete(enemyService);
 		delete(timeService);
 		delete(uiService);
+		delete(soundService);
 	}
 
 	ServiceLocator* ServiceLocator::getInstance()
@@ -57,9 +62,11 @@ namespace Global {
 		eventService->initialize();
 		gameplayService->initialize();
 		playerService->initialize();
+		elementService->initialize();
 		enemyService->initialize();
 		timeService->initialize();
 		uiService->initialize();
+		soundService->initialize();
 	}
 
 	void ServiceLocator::update()
@@ -69,6 +76,7 @@ namespace Global {
 		if (GameService::getGameState() == GameState::GAMEPLAY) {
 			gameplayService->update();
 			playerService->update();
+			elementService->update();
 			enemyService->update();
 		}
 		timeService->update();
@@ -81,6 +89,7 @@ namespace Global {
 		if (GameService::getGameState() == GameState::GAMEPLAY) {
 			gameplayService->render();
 			playerService->render();
+			elementService->render();
 			enemyService->render();
 		}
 		uiService->render();
@@ -103,6 +112,11 @@ namespace Global {
 		return playerService;
 	}
 
+	ElementService* ServiceLocator::getElementService()
+	{
+		return elementService;
+	}
+
 	EnemyService* ServiceLocator::getEnemyService()
 	{
 		return enemyService;
@@ -115,6 +129,10 @@ namespace Global {
 	UIService* ServiceLocator::getUIService()
 	{
 		return uiService;
+	}
+	SoundService* ServiceLocator::getSoundService()
+	{
+		return soundService;
 	}
 	GameplayService* ServiceLocator::getGameplayService()
 	{

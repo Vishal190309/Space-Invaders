@@ -4,7 +4,7 @@ namespace Graphic {
 	class GraphicService {
 
 	private:
-		const std::string game_window_title = "Test";
+		
 
 
 		int game_window_width = 1920;

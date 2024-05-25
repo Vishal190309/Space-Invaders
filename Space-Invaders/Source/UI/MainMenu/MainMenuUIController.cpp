@@ -1,6 +1,7 @@
 #include "../../Header/UI/MainMenu/MainMenuUIController.h"
 #include "../../Header/Main/GameService.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Global/Config.h"
 #include "../../Header/Graphic/GraphicService.h"
 
 namespace UI
@@ -11,6 +12,7 @@ namespace UI
         using namespace Main;
         using namespace Graphic;
         using namespace Event;
+        using namespace Sound;
 
         MainMenuUIController::MainMenuUIController() { gameWindow = nullptr; }
 
@@ -40,7 +42,7 @@ namespace UI
 
         void MainMenuUIController::initializeBakcroundImage()
         {
-            if (backgroundTexture.loadFromFile(backgroundTexturePath)) {
+            if (backgroundTexture.loadFromFile(Config::backgroundTexturePath)) {
                 backgroundSprite.setTexture(backgroundTexture);
                 scaleBackgroundImage();
             }
@@ -61,16 +63,16 @@ namespace UI
                 setButtonSprites();
                 scaleAllButttons();
                 positionButtons();
-
+                
             }
         }
 
         bool MainMenuUIController::loadButtonTexturesFromFile()
         {
             
-             return playButtonTexture.loadFromFile(playButtonTexturePath)
-                 && instructionButtonTexture.loadFromFile(instructionButtonTexturePath)
-                   && quitButtonTexture.loadFromFile(quitButtonTexturePath);
+             return playButtonTexture.loadFromFile(Config::playButtonTexturePath)
+                 && instructionButtonTexture.loadFromFile(Config::instructionsButtonTexturePath)
+                   && quitButtonTexture.loadFromFile(Config::quitButtonTexturePath);
             
         }
 
@@ -107,14 +109,22 @@ namespace UI
 
         void MainMenuUIController::processButtonInteractions()
         {
+           
             sf::Vector2f mousePosition = sf::Vector2f(sf::Mouse::getPosition(*gameWindow));
             if (clickedButton(&playButtonSprite, mousePosition)) {
+
+                ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+                ServiceLocator::getInstance()->getSoundService()->playBackroundMusic();
                 GameService::setGameState(GameState::GAMEPLAY);
             }
             if (clickedButton(&instructionButtonSprite, mousePosition)) {
+                ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+                ServiceLocator::getInstance()->getSoundService()->playBackroundMusic();
                 printf("Clicked instruction button\n");
             }
             if (clickedButton(&quitButtonSprite, mousePosition)) {
+                ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+                ServiceLocator::getInstance()->getSoundService()->playBackroundMusic();
                 gameWindow->close();
             }
         }

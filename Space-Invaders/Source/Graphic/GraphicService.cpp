@@ -1,4 +1,6 @@
 #include "../../Header/Graphic/GraphicService.h"
+#include "../../Header/Global/Config.h"
+
 
 namespace Graphic {
 	void GraphicService::setVideoMode()
@@ -27,7 +29,7 @@ namespace Graphic {
 	sf::RenderWindow* GraphicService::createGameWindow()
 	{
 		setVideoMode();
-		return new sf::RenderWindow(*videoMode, game_window_title,sf::Style::Default);
+		return new sf::RenderWindow(*videoMode, Global::Config::gameWindowTitle,sf::Style::Default);
 	}
 
 	void GraphicService::initialize()
