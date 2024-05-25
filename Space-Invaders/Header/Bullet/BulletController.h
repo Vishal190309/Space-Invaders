@@ -18,7 +18,7 @@ namespace Bullet {
 		void moveDown();
 		void handleOutOfBounds();
 	public:
-		BulletController(BulletType);
+		BulletController(BulletType type);
 		virtual ~BulletController();
 
 		void initialize(sf::Vector2f position, Bullet::MovementDirection direction) override;
