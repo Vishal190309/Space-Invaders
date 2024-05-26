@@ -20,6 +20,13 @@ namespace Enemy {
 		
 		EnemyView* enemyView;
 		EnemyModel* enemyModel;
+
+		float rateOfFire = 3.f;
+		float elapsedFireDuration = 0.f;
+
+		void updateFireTimer();
+		void processBulletFire();
+		virtual void fireBullet() = 0;
 		virtual void move() = 0;
 		sf::Vector2f getRandomInitialPosition();
 		void handleOutOfBounds();

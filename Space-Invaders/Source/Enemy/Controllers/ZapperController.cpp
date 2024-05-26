@@ -59,6 +59,12 @@ namespace Enemy {
 				enemyModel->setEnemyPosition(currentPosition);
 			}
 		}
+		void ZapperController::fireBullet()
+		{
+			Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::LASER_BULLET
+				, enemyModel->getEnemyPosition() + enemyModel->barrelPositionOffset
+				, Bullet::MovementDirection::DOWN);
+		}
 		ZapperController::ZapperController(EnemyType type) : EnemyController(type)
 		{
 		}
@@ -68,6 +74,7 @@ namespace Enemy {
 		void ZapperController::initialize()
 		{
 			EnemyController::initialize();
+			rateOfFire = zapperFireRate;
 		}
 	}
 }

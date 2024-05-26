@@ -17,7 +17,7 @@ namespace Player {
         sf::Vector2f playerPosition;
         PlayerState playerState;
         int playerScore;
-
+        const sf::Vector2f barrelPositionOffset = sf::Vector2f(20.f, -25.f);
     public:
         const sf::Vector2f leftMostPosition = sf::Vector2f(50.f, 950.f);
         const sf::Vector2f rightMostPosition = sf::Vector2f(1800.f, 950.f);
@@ -29,6 +29,7 @@ namespace Player {
 
         void initialize();
         void reset();
+     
 
         sf::Vector2f getPlayerPosition();
         void setPlayerPosition(sf::Vector2f position);
@@ -39,6 +40,10 @@ namespace Player {
         //new getter and setter
         PlayerState getPlayerState();
         void setPlayerState(PlayerState state);
+
+        sf::Vector2f getPlayerBarrelOffset();
+
+
 
 
     };
