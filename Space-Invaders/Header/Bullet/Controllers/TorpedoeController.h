@@ -5,7 +5,7 @@ namespace Bullet {
 	namespace Controllers {
 		class TorpedoeBulletController:public BulletController {
 		private:
-			float movementSpeed = 200.f;
+			float movementSpeed = 300.f;
 
 		public:
 			TorpedoeBulletController(BulletType);

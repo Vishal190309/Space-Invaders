@@ -5,7 +5,7 @@ namespace Bullet {
 	namespace Controllers {
 		class ForstBulletController : public BulletController{
 		private:
-			float movementSpeed = 200.f;
+			float movementSpeed = 700.f;
 
 		public:
 			ForstBulletController(BulletType);

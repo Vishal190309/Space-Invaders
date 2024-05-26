@@ -8,9 +8,11 @@ namespace Enemy {
 		private:
 			float verticalMovmentSpeed = 25.f;
 			float horizontalMovementSpeed = 300.f;
+			float thunderSnakeFireRate = 3.f;
 			void move() override;
 			void moveLeft();
 			void moveRight();
+			void fireBullet() override;
 
 		public:
 			ThunderSnakeController(EnemyType type);

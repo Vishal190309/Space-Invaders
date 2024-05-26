@@ -14,6 +14,7 @@ namespace Player {
 		playerScore = 0;
 	}
 
+
 	sf::Vector2f PlayerModel::getPlayerPosition()
 	{
 		return playerPosition;
@@ -44,4 +45,9 @@ namespace Player {
 	{
 		playerState = state;
 	}
+	sf::Vector2f PlayerModel::getPlayerBarrelOffset()
+	{
+		return barrelPositionOffset;
+	}
+	
 }

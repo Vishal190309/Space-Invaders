@@ -63,6 +63,17 @@ namespace Enemy {
 			enemyModel->setEnemyPosition(currentPosition);
 		}
 	}*/
+	void EnemyController::updateFireTimer()
+	{
+		elapsedFireDuration += Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+	}
+	void EnemyController::processBulletFire()
+	{
+		if (elapsedFireDuration >= rateOfFire) {
+			fireBullet();
+			elapsedFireDuration = 0.f;
+		}
+	}
 	sf::Vector2f EnemyController::getRandomInitialPosition()
 	{
 		float xOffsetDistance = (std::rand() % static_cast<int>(enemyModel->rightMostPosition.x - enemyModel->leftMostPosition.x));
@@ -104,6 +115,8 @@ namespace Enemy {
 	void EnemyController::update()
 	{
 		move();
+		updateFireTimer();
+		processBulletFire();
 		enemyView->update();
 		handleOutOfBounds();
 

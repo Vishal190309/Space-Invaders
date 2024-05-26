@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../Header/Projectile/IProjectile.h"
 namespace Bullet {
-
 	class BulletController;
 	enum class BulletType;
 	enum class MovementDirection;
