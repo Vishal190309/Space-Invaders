@@ -144,6 +144,12 @@
     <ClCompile Include="Source\Powerups\Controllers\TrippleLaserController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Enemy\Controllers\UFOController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Header\Enemy\Controllers\ZapperController.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Main\GameService.h">
@@ -203,7 +209,7 @@
     <ClInclude Include="Header\Enemy\Controllers\SubZeroController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Enemy\Controllers\ZapperController.h">
+    <ClInclude Include="Header\Enemy\Controllers\UFOController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header\Enemy\EnemyConfig.h">

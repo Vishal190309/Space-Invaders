@@ -1,5 +1,5 @@
 #pragma once
-#include "../Collectible/ICollectible.h"
+#include "../../Header/Collectible/ICollectible.h"
 namespace Powerup {
 	enum class PowerupType;
 	class PowerupModel;

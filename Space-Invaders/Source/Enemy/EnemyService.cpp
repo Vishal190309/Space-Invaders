@@ -6,6 +6,7 @@
 #include "../../Header/Enemy/Controllers/SubZeroController.h"
 #include "../../Header/Enemy/Controllers/ZapperController.h"
 #include "../../Header/Enemy/Controllers/ThunderSnakeController.h"
+#include "../../Header/Enemy/Controllers/UFOController.h"
 #include <iostream>
 
 namespace Enemy {
@@ -68,7 +69,7 @@ namespace Enemy {
 
 	EnemyType EnemyService::getRandomEnemyType()
 	{
-		int randomEnemyType = std::rand() % 3;
+		int randomEnemyType = std::rand() % 4;
 		return static_cast<Enemy::EnemyType>(randomEnemyType);
 	}
 	EnemyController* EnemyService::createEnemy(EnemyType type)
@@ -83,9 +84,10 @@ namespace Enemy {
 		case EnemyType::THUNDER_SNAKE:
 			return new Controllers::ThunderSnakeController(type);
 			break;
-		/*case EnemyType::UFO:
+		case EnemyType::UFO:
+			return new Controllers::UFOController(type);
 			break;
-			*/
+			
 		}
 		return new Controllers::SubZeroController(type);
 	}

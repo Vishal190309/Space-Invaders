@@ -26,9 +26,13 @@ namespace Enemy {
 				scaleSprite();
 			}
 			break;
-		/*
+		
 		case EnemyType::UFO :
-			break;*/
+			if (enemyTexture.loadFromFile(Config::ufoTexturePath)) {
+				enemySprite.setTexture(enemyTexture);
+				scaleSprite();
+			}
+			break;
 		}
 		
 	}

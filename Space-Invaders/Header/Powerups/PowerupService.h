@@ -10,7 +10,7 @@ namespace Powerup {
 	class PowerupService {
 	private:
 		PowerupType powerupType;
-		std::vector<Collectible::ICollectible> listOfPowerups;
+		std::vector<Collectible::ICollectible*> listOfPowerups;
 
 		PowerupController* createPowerup(PowerupType powerupType);
 		void destroy();
@@ -23,7 +23,7 @@ namespace Powerup {
 		void update();
 		void render();
 
-		PowerupController* spawnPowerup(PowerupType powerType, sf::Vector2f position);
+		PowerupController* spawnPowerup(PowerupType powerupType, sf::Vector2f position);
 		void destroyPowerup(PowerupController* powerupController);
 	};
 }

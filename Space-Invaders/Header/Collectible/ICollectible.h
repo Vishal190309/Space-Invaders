@@ -3,7 +3,7 @@
 namespace Collectible {
 	class ICollectible {
 	public:
-		virtual ~ICollectible() = 0;
+		virtual ~ICollectible() {};
 		virtual void onCollected() = 0;
 		virtual void initialize(sf::Vector2f position) = 0;
 		virtual void update() = 0;
