@@ -9,6 +9,7 @@
 #include "../../Header/Element/ElementService.h"
 #include "../../Header/Sound/SoundService.h"
 #include "../../Header/Bullet/BulletService.h"
+#include "../../Header/Powerups/PowerupService.h"
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
 // include relevant headers files
@@ -22,6 +23,7 @@ namespace Global {
     using namespace Bullet;
     using namespace Gameplay;
     using namespace Element;
+    using namespace Powerup;
     using namespace Sound;
     class ServiceLocator
     {
@@ -35,6 +37,7 @@ namespace Global {
         ElementService* elementService;
         EnemyService* enemyService;
         BulletService* bulletService;
+        PowerupService* powerupService;
         TimeService* timeService;
         UIService* uiService;
         SoundService* soundService;
@@ -72,6 +75,7 @@ namespace Global {
         ElementService* getElementService();
         EnemyService* getEnemyService();
         BulletService* getBulletService();
+        PowerupService* getPowerupService();
         TimeService* getTimeService();
         UIService* getUIService();
         SoundService* getSoundService();

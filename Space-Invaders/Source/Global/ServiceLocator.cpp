@@ -13,6 +13,7 @@ namespace Global {
 		elementService = nullptr;
 		enemyService = nullptr;
 		bulletService = nullptr;
+		powerupService = nullptr;
 		timeService = nullptr;
 		uiService = nullptr;
 		
@@ -33,6 +34,7 @@ namespace Global {
 		elementService = new ElementService();
 		enemyService = new EnemyService();
 		bulletService = new BulletService();
+		powerupService = new PowerupService();
 		timeService = new TimeService();
 		uiService = new UIService();
 		soundService = new SoundService();
@@ -48,6 +50,7 @@ namespace Global {
 		delete(elementService);
 		delete(enemyService);
 		delete(bulletService);
+		delete(powerupService);
 		delete(timeService);
 		delete(uiService);
 		delete(soundService);
@@ -68,6 +71,7 @@ namespace Global {
 		elementService->initialize();
 		enemyService->initialize();
 		bulletService->initialize();
+		powerupService->initialize();
 		timeService->initialize();
 		uiService->initialize();
 		soundService->initialize();
@@ -83,6 +87,7 @@ namespace Global {
 			elementService->update();
 			enemyService->update();
 			bulletService->update();
+			powerupService->update();
 		}
 		timeService->update();
 		uiService->update();
@@ -97,6 +102,7 @@ namespace Global {
 			elementService->render();
 			enemyService->render();
 			bulletService->render();
+			powerupService->render();
 		}
 		uiService->render();
 		
@@ -131,6 +137,11 @@ namespace Global {
 	BulletService* ServiceLocator::getBulletService()
 	{
 		return bulletService;
+	}
+
+	PowerupService* ServiceLocator::getPowerupService()
+	{
+		return powerupService;
 	}
 
 	TimeService* ServiceLocator::getTimeService()
