@@ -1,0 +1,27 @@
+#pragma once
+#include "../../../Header/UI/UIElement/UIView.h"
+
+namespace UIElement {
+	class ImageView : public UIView {
+	protected:
+		sf::Texture texture;
+		sf::Sprite sprite;
+	public:
+		ImageView();
+		virtual ~ImageView();
+		virtual void initialize(sf::String texturePath, float imageWidth, float imageHeight, sf::Vector2f postion);
+		virtual void update() override;
+		virtual void render() override;
+		virtual void setTexture(sf::String texturePath);
+		virtual void setScale(float xScale, float yScale);
+		virtual void setPosition(sf::Vector2f position);
+		virtual void setRotation(float angle);
+		virtual void setOriginAtCentre();
+		virtual void setImageAlpha(float alpha);
+		virtual void setCentreAlinged();
+
+
+
+
+	};
+}

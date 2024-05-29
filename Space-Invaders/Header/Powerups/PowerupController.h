@@ -19,7 +19,7 @@ namespace Powerup {
 		void render() override;
 
 		void onCollected() override;
-		sf::Vector2f  getCollectiblePosition() override;
+		sf::Vector2f  getPowerupPosition() override;
 		PowerupType getPowerupType();
 
 

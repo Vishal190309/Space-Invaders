@@ -6,52 +6,42 @@
 
 namespace Powerup {
 	using namespace Global;
-	void PowerupView::initializeImage(PowerupType type)
+	
+
+	void PowerupView::createUIElements()
 	{
-		switch (type)
+		powerupImage = new UIElement::ImageView();
+	}
+	void PowerupView::initializeImage()
+	{
+		powerupImage->initialize(getPowerupTexturPath(), powerupWidth, powerupHeight, powerupController->getPowerupPosition());
+
+	}
+	sf::String PowerupView::getPowerupTexturPath()
+	{
+		switch (powerupController->getPowerupType())
 		{
 		case::Powerup::PowerupType::TRIPPLE_LASER:
-			if (powerupTexture.loadFromFile(Config::trippleLaserTexturePath))
-			{
-				powerupSprite.setTexture(powerupTexture);
-				scaleImage();
-			}
+			return Config::trippleLaserTexturePath;
 			break;
 		case::Powerup::PowerupType::SHIELD:
-			if (powerupTexture.loadFromFile(Config::shieldTexturePath))
-			{
-				powerupSprite.setTexture(powerupTexture);
-				scaleImage();
-			}
+			return Config::shieldTexturePath;
 			break;
 		case::Powerup::PowerupType::RAPID_FIRE:
-			if (powerupTexture.loadFromFile(Config::rapidFireTexturePath))
-			{
-				powerupSprite.setTexture(powerupTexture);
-				scaleImage();
-			}
+			return Config::rapidFireTexturePath;
 			break;
 		case::Powerup::PowerupType::OUTSCAL_BOMB:
-			if (powerupTexture.loadFromFile(Config::outscalBombTexturePath))
-			{
-				powerupSprite.setTexture(powerupTexture);
-				scaleImage();
-			}
+			return Config::outscalBombTexturePath;
 			break;
 		}
 	}
-	void PowerupView::scaleImage()
-	{
-		powerupSprite.setScale(
-			static_cast<float>(powerupWidth) / powerupSprite.getTexture()->getSize().x,
-			static_cast<float>(powerupHeight) / powerupSprite.getTexture()->getSize().y
-		);
-	}
 	void PowerupView::destroy()
 	{
+		delete(powerupImage);
 	}
 	PowerupView::PowerupView()
 	{
+		createUIElements();
 	}
 	PowerupView::~PowerupView()
 	{
@@ -60,15 +50,15 @@ namespace Powerup {
 	void PowerupView::initialize(PowerupController* controller)
 	{
 		powerupController = controller;
-		gameWindow = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-		initializeImage(powerupController->getPowerupType());
+		initializeImage();
 	}
 	void PowerupView::update()
 	{
-		powerupSprite.setPosition(powerupController->getCollectiblePosition());
+		powerupImage->setPosition(powerupController->getPowerupPosition());
+		powerupImage->update();
 	}
 	void PowerupView::render()
 	{
-		gameWindow->draw(powerupSprite);
+		powerupImage->render();
 	}
 }
