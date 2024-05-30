@@ -5,6 +5,7 @@
 namespace Enemy {
 	class EnemyController;
 	enum class EnemyType;
+	using namespace UI;
 	class EnemyView {
 	private:
 		

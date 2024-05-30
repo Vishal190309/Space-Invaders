@@ -5,7 +5,7 @@
 namespace Player {
 class PlayerController;
 
-
+using namespace UI;
 	class PlayerView {
 
 	private:

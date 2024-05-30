@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "..\UI\UIElement\ImageView.h"
 namespace Powerup {
+	using namespace UI;
 	class PowerupController;
 	enum class PowerupType;
 

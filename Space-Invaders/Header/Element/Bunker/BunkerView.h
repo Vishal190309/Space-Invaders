@@ -5,6 +5,7 @@
 namespace Element {
 	namespace Bunker {
 		class BunkerController;
+		using namespace UI;
 		class BunkerView {
 		private:
 			const float width = 80.f;

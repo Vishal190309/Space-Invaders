@@ -3,6 +3,7 @@
 #include "../../Header/UI/UIElement/ImageView.h"
 
 namespace Bullet {
+	using namespace UI;
 	class BulletController;
 	enum class BulletType;
 	class BulletView {

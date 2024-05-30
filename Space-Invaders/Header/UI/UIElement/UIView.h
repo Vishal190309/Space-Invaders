@@ -1,27 +1,29 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-namespace UIElement {
-	enum class UIState
-	{
-		VISIBLE,
-		HIDDEN
-	};
+namespace UI {
+	namespace UIElement {
+		enum class UIState
+		{
+			VISIBLE,
+			HIDDEN
+		};
 
-	class UIView {
-	protected:
-		sf::RenderWindow* gameWindow;
-		UIState uiState;
+		class UIView {
+		protected:
+			sf::RenderWindow* gameWindow;
+			UIState uiState;
 
-	public:
-		UIView();
-		~UIView();
+		public:
+			UIView();
+			~UIView();
 
-		virtual void initialize();
-		virtual void update();
-		virtual void render();
+			virtual void initialize();
+			virtual void update();
+			virtual void render();
 
-		virtual void show();
-		virtual void hide();
-	};
+			virtual void show();
+			virtual void hide();
+		};
+	}
 }

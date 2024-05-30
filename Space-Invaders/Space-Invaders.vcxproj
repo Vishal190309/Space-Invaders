@@ -133,6 +133,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Header\Enemy\Controllers\ZapperController.h" />
+    <ClCompile Include="Source\UI\UIElement\TextView.cpp" />
     <ClCompile Include="Source\Bullet\BulletService.cpp" />
     <ClCompile Include="Source\Bullet\Controllers\ForstBulletController.cpp" />
     <ClCompile Include="Source\Bullet\Controllers\LaserBulletController.cpp" />
@@ -228,6 +229,7 @@
     <ClInclude Include="Header\UI\Interface\IUIController.h" />
     <ClInclude Include="Header\UI\MainMenu\MainMenuUIController.h" />
     <ClInclude Include="Header\UI\UIElement\ImageView.h" />
+    <ClInclude Include="Header\UI\UIElement\TextView.h" />
     <ClInclude Include="Header\UI\UIService.h" />
     <ClInclude Include="Header\UI\UIElement\UIView.h" />
     <ClInclude Include="Source\UI\UIElement\UIView.cpp" />
