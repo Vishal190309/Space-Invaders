@@ -16,7 +16,7 @@ namespace UI {
 
 		public:
 			UIView();
-			~UIView();
+			virtual ~UIView();
 
 			virtual void initialize();
 			virtual void update();

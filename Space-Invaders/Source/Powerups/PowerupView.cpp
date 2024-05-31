@@ -33,6 +33,9 @@ namespace Powerup {
 		case::Powerup::PowerupType::OUTSCAL_BOMB:
 			return Config::outscalBombTexturePath;
 			break;
+		default:
+			return Config::trippleLaserTexturePath;
+			break;
 		}
 	}
 	void PowerupView::destroy()

@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "UIView.h"
+#include "../../../Header/UI/UIElement/UIView.h"
 namespace UI {
 	namespace UIElement {
 		enum class FontType
@@ -11,7 +11,7 @@ namespace UI {
 		class TextView : public UIView
 		{
 		private:
-			
+
 			static const int defaultFontSize = 55;
 			static sf::Font fontBubbleBobble;
 			static sf::Font fontDS_DIGIB;

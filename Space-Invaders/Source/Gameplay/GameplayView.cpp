@@ -12,8 +12,7 @@ namespace Gameplay {
 	}
 	void GameplayView::initializeImage()
 	{
-		backgroundImage->setOriginAtCentre();
-		backgroundImage->initialize(Config::backgroundTexturePath, gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(gameWindow->getSize().x/2, gameWindow->getSize().y/2));
+		backgroundImage->initialize(Config::backgroundTexturePath, gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(0.f,0.f));
 		
 	}
 	void GameplayView::destroy()

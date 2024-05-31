@@ -27,6 +27,9 @@ namespace Bullet {
 		case BulletType::TORPEDO:
 			return Config::torpedoeTexturePath;
 			break;
+		default:
+			return Config::laserBulletTexturePath;
+			break;
 		}
 	}
 	void BulletView::destroy()

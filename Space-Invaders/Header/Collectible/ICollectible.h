@@ -8,6 +8,6 @@ namespace Collectible {
 		virtual void initialize(sf::Vector2f position) = 0;
 		virtual void update() = 0;
 		virtual void render() = 0;
-		virtual sf::Vector2f  getCollectiblePosition() = 0;
+		virtual sf::Vector2f  getPowerupPosition() = 0;
 	};
 }

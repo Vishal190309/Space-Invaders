@@ -31,6 +31,9 @@ namespace Enemy {
 		case EnemyType::UFO:
 			return Config::ufoTexturePath;
 			break;
+		default:
+			return Config::subzeroTexturePath;
+			break;
 		}
 	}
 	void EnemyView::destroy()

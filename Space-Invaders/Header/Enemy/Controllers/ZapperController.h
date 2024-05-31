@@ -1,10 +1,10 @@
-#pragma once
+﻿#pragma once
 #include "../EnemyController.h"
 #include "../../../Header/Bullet/BulletConfig.h"
 namespace Enemy {
 
-	namespace Controllers {
-		class ZapperController : public EnemyController {
+    namespace Controllers {
+        class ZapperController : public EnemyController {
         private:
             float verticalTravelDistance = 100.f;
             float zapperFireRate = 2.f;
@@ -19,6 +19,6 @@ namespace Enemy {
             ~ZapperController();
 
             void initialize() override;
-		};
-	}
+        };
+    }
 }

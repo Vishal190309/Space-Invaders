@@ -2,7 +2,8 @@
 
 namespace UI {
 	namespace UIElement {
-
+		ImageView::ImageView() = default;
+		ImageView::~ImageView() = default;
 		void ImageView::initialize(sf::String texturePath, float imageWidth, float imageHeight, sf::Vector2f postion)
 		{
 			UIView::initialize();
@@ -55,7 +56,7 @@ namespace UI {
 		void ImageView::setCentreAlinged()
 		{
 			float positionX = (gameWindow->getSize().x / 2 - sprite.getGlobalBounds().width / 2);
-			float positionY = sprite.getGlobalBounds().getSize().y;
+			float positionY = sprite.getGlobalBounds().getPosition().y;
 
 			sprite.setPosition(positionX, positionY);
 		}

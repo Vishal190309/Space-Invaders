@@ -3,6 +3,8 @@
 #include "../../Header/Global/ServiceLocator.h"
 #include "../../Header/Global/Config.h"
 #include "../../Header/Graphic/GraphicService.h"
+#include "../../../Header/UI/UIElement/ButtonView.h"
+#include "../../../Header/UI/UIElement/ImageView.h"
 
 namespace UI
 {
@@ -13,128 +15,121 @@ namespace UI
         using namespace Graphic;
         using namespace Event;
         using namespace Sound;
+        using namespace UIElement;
 
-        MainMenuUIController::MainMenuUIController() { gameWindow = nullptr; }
+        MainMenuUIController::MainMenuUIController() { 
+            createImage();
+            createButton();
+        }
 
         MainMenuUIController::~MainMenuUIController()
         {
+            destroy();
         }
 
         void MainMenuUIController::initialize()
         {
-            gameWindow = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-            initializeBakcroundImage();
+            initializeBackgroundImage();
             initializeButtons();
+            registerButtonCallback();
         }
 
         void MainMenuUIController::update()
         {
-            processButtonInteractions();
+            backgroundImage->update();
+            playButton->update();
+            instructionsButton->update();
+            quitButton->update();
+
         }
 
         void MainMenuUIController::render()
+
         {
-            gameWindow->draw(backgroundSprite);
-            gameWindow->draw(playButtonSprite);
-            gameWindow->draw(instructionButtonSprite);
-            gameWindow->draw(quitButtonSprite);
+            backgroundImage->render();
+            playButton->render();
+            instructionsButton->render();
+            quitButton->render();
         }
 
-        void MainMenuUIController::initializeBakcroundImage()
+        void MainMenuUIController::show()
         {
-            if (backgroundTexture.loadFromFile(Config::backgroundTexturePath)) {
-                backgroundSprite.setTexture(backgroundTexture);
-                scaleBackgroundImage();
-            }
-           
+            backgroundImage->show();
+            playButton->show();
+            instructionsButton->show();
+            quitButton->show();
+
+            ServiceLocator::getInstance()->getSoundService()->playBackroundMusic();
         }
 
-        void MainMenuUIController::scaleBackgroundImage()
+      
+
+
+        void MainMenuUIController::createImage()
         {
-            backgroundSprite.setScale(
-                static_cast<float>(gameWindow->getSize().x) / backgroundSprite.getTexture()->getSize().x,
-                static_cast<float>(gameWindow->getSize().y) / backgroundSprite.getTexture()->getSize().y
-            );
+            backgroundImage = new ImageView();
+        }
+
+        void MainMenuUIController::createButton()
+        {
+            playButton = new ButtonView();
+            instructionsButton = new ButtonView();
+            quitButton = new ButtonView();
+        }
+
+        void MainMenuUIController::initializeBackgroundImage()
+        {
+            sf::RenderWindow* gameWindow = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+            backgroundImage->initialize(Config::backgroundTexturePath, gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(0.f, 0.f));
+            backgroundImage->setImageAlpha(backgroundAlpha);
         }
 
         void MainMenuUIController::initializeButtons()
         {
-            if (loadButtonTexturesFromFile()) {
-                setButtonSprites();
-                scaleAllButttons();
-                positionButtons();
-                
-            }
+            playButton->initialize("Play Button", Config::playButtonTexturePath, buttonWidth, buttonHeight, sf::Vector2f(0, playButtonYPosition));
+            instructionsButton->initialize("Instructions Button", Config::instructionsButtonTexturePath, buttonWidth, buttonHeight, sf::Vector2f(0, instructionsButtonYPosition));
+            quitButton->initialize("Quit Button", Config::quitButtonTexturePath, buttonWidth, buttonHeight, sf::Vector2f(0, quitButtonYPosition));
+
+            playButton->setCentreAlinged();
+            instructionsButton->setCentreAlinged();
+            quitButton->setCentreAlinged();
+
         }
 
-        bool MainMenuUIController::loadButtonTexturesFromFile()
+        void MainMenuUIController::registerButtonCallback()
         {
-            
-             return playButtonTexture.loadFromFile(Config::playButtonTexturePath)
-                 && instructionButtonTexture.loadFromFile(Config::instructionsButtonTexturePath)
-                   && quitButtonTexture.loadFromFile(Config::quitButtonTexturePath);
-            
+            playButton->registerCallbackFuntion(std::bind(&MainMenuUIController::playButtonCallback, this));
+            instructionsButton->registerCallbackFuntion(std::bind(&MainMenuUIController::intstructionButtonCallback, this));
+            quitButton->registerCallbackFuntion(std::bind(&MainMenuUIController::quitButtonCallback, this));
         }
 
-        void MainMenuUIController::setButtonSprites()
+        void MainMenuUIController::playButtonCallback()
         {
-            playButtonSprite.setTexture(playButtonTexture);
-            instructionButtonSprite.setTexture(instructionButtonTexture);
-            quitButtonSprite.setTexture(quitButtonTexture);
+            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+            GameService::setGameState(GameState::GAMEPLAY);
         }
 
-        void MainMenuUIController::scaleAllButttons()
+        void MainMenuUIController::intstructionButtonCallback()
         {
-            scaleButton(&playButtonSprite);
-            scaleButton(&instructionButtonSprite);
-            scaleButton(&quitButtonSprite);
-            
+            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
         }
 
-        void MainMenuUIController::scaleButton(sf::Sprite* buttonToScale)
+        void MainMenuUIController::quitButtonCallback()
         {
-            buttonToScale->setScale(
-                buttonWidth / buttonToScale->getTexture()->getSize().x,
-                buttonHeight / buttonToScale->getTexture()->getSize().y
-            );
+            ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+            ServiceLocator::getInstance()->getGraphicService()->getGameWindow()->close();
         }
 
-        void MainMenuUIController::positionButtons()
+        void MainMenuUIController::destroy()
         {
-            float xPosition = static_cast<float>(gameWindow->getSize().x / 2)-(buttonWidth/2);
-            playButtonSprite.setPosition(xPosition, 500.0f);
-            instructionButtonSprite.setPosition(xPosition, 700.0f);
-            quitButtonSprite.setPosition(xPosition, 900.0f);
+         
+            delete(playButton);
+            delete(quitButton);
+            delete(instructionsButton);
+            delete(backgroundImage);
         }
 
-        void MainMenuUIController::processButtonInteractions()
-        {
-           
-            sf::Vector2f mousePosition = sf::Vector2f(sf::Mouse::getPosition(*gameWindow));
-            if (clickedButton(&playButtonSprite, mousePosition)) {
-
-                ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
-                ServiceLocator::getInstance()->getSoundService()->playBackroundMusic();
-                GameService::setGameState(GameState::GAMEPLAY);
-            }
-            if (clickedButton(&instructionButtonSprite, mousePosition)) {
-                ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
-                ServiceLocator::getInstance()->getSoundService()->playBackroundMusic();
-                printf("Clicked instruction button\n");
-            }
-            if (clickedButton(&quitButtonSprite, mousePosition)) {
-                ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
-                ServiceLocator::getInstance()->getSoundService()->playBackroundMusic();
-                gameWindow->close();
-            }
-        }
-
-        bool MainMenuUIController::clickedButton(sf::Sprite* buttonSprite, sf::Vector2f mousePosition)
-        {
-            EventService* eventService = ServiceLocator::getInstance()->getEventService();
-          
-            return eventService->pressedLeftMouseButton() && buttonSprite->getGlobalBounds().contains(gameWindow->mapPixelToCoords(static_cast<sf::Vector2i> (mousePosition)));
-        }
+       
 
     }
 }
