@@ -92,5 +92,14 @@ namespace Player {
 			Bullet::MovementDirection::UP,playerModel->getEntityType());
 	}
 
+	const sf::Sprite& PlayerController::getColliderSprite()
+	{
+		// TODO: insert return statement here
+	}
+
+	void PlayerController::onCollision(ICollider* otherCollider)
+	{
+	}
+
 }
 

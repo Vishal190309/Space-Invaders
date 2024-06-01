@@ -26,6 +26,7 @@ using namespace UI;
 		void update();
 		void render();
 
+		const sf::Sprite& getPlayerSprite();
 
 
 	};
