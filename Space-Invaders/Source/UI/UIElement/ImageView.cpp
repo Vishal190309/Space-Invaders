@@ -60,5 +60,9 @@ namespace UI {
 
 			sprite.setPosition(positionX, positionY);
 		}
+		const sf::Sprite& ImageView::getSprite()
+		{
+			return sprite;
+		}
 	}
 }

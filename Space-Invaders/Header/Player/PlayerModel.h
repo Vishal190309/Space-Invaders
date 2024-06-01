@@ -42,8 +42,8 @@ namespace Player {
         const float trippleLaserPositionOffset = 30.f;
 
         float elapsedShieldDuration;
-        float elapsedRapid_fireDuration;
-        float elapsedTripple_laserDuration;
+        float elapsedRapidFireDuration;
+        float elapsedTrippleLaserDuration;
 
         float elapsedFireDuration;
         float elapsedFreezeDuration;
@@ -76,7 +76,7 @@ namespace Player {
 
         void setShieldState(bool value);
         void setRapidFireState(bool value);
-        void setTrippleFireState(bool value);
+        void setTrippleLaserState(bool value);
 
     };
 }

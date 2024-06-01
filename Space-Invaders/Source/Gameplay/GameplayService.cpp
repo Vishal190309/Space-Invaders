@@ -1,5 +1,6 @@
 #include "../../Header/Gameplay/GameplayService.h"
 #include "../../Header/Gameplay/GameplayControlller.h"
+#include "../../Header/Global/ServiceLocator.h"
 
 namespace Gameplay {
 	GameplayService::GameplayService()
@@ -21,5 +22,12 @@ namespace Gameplay {
 	void GameplayService::render()
 	{
 		gameplayController->render();
+	}
+	void GameplayService::restart()
+	{
+		Global::ServiceLocator::getInstance()->getPlayerService()->reset();
+		Global::ServiceLocator::getInstance()->getEnemyService()->reset();
+		Global::ServiceLocator::getInstance()->getBulletService()->reset();
+		Global::ServiceLocator::getInstance()->getElementService()->reset();
 	}
 }
