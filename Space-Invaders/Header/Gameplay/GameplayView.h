@@ -1,18 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../Header/UI/UIElement/ImageView.h"
 
 namespace Gameplay {
-	
+	using namespace UI;
 	class GameplayView {
 	private:
-	
-		
-		sf::Texture bgTexture;
-		sf::Sprite bgSprite;
-		
 		sf::RenderWindow* gameWindow;
-		void initializeBgSprite();
-		void scaleBgSprite();
+		UIElement::ImageView* backgroundImage;
+		void createUIElements();
+		void initializeImage();
+		void destroy();
 	public:
 		GameplayView();
 		~GameplayView();

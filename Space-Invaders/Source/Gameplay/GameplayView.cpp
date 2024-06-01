@@ -4,31 +4,36 @@
 
 namespace Gameplay {
 	using namespace Global;
-	void GameplayView::initializeBgSprite()
+	
+	
+	void GameplayView::createUIElements()
 	{
-		if (bgTexture.loadFromFile(Config::backgroundTexturePath)) {
-			bgSprite.setTexture(bgTexture);
-			scaleBgSprite();
-		}
+		backgroundImage = new UIElement::ImageView();
 	}
-	void GameplayView::scaleBgSprite()
+	void GameplayView::initializeImage()
 	{
-		bgSprite.setScale(
-			static_cast<float>(gameWindow->getSize().x) / bgSprite.getTexture()->getSize().x,
-			static_cast<float>(gameWindow->getSize().y) / bgSprite.getTexture()->getSize().y
-		);
+		backgroundImage->initialize(Config::backgroundTexturePath, gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(0.f,0.f));
+		
+	}
+	void GameplayView::destroy()
+	{
+		delete(backgroundImage);
 	}
 	GameplayView::GameplayView()
 	{
+		
+		createUIElements();
 		gameWindow = nullptr;
+
 	}
 	GameplayView::~GameplayView()
 	{
+		destroy();
 	}
 	void GameplayView::initialize()
 	{
 		gameWindow = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-		initializeBgSprite();
+		initializeImage();
 		
 	}
 	void GameplayView::update()
@@ -36,6 +41,6 @@ namespace Gameplay {
 	}
 	void GameplayView::render()
 	{
-		gameWindow->draw(bgSprite);
+		backgroundImage->render();
 	}
 }

@@ -5,13 +5,13 @@ namespace Sound {
 	using namespace Global;
 	void SoundService::loadBackgroundMusicFromFile()
 	{
-		if (backgroundMusic.openFromFile(Config::backgroundMusicPath)) {
+		if (!backgroundMusic.openFromFile(Config::backgroundMusicPath)) {
 			printf("Error loading background music file");
 		}
 	}
 	void SoundService::loadSoundFromFile()
 	{
-		if (bufferButtonClick.loadFromFile(Config::buttonClickSoundPath)) {
+		if (!bufferButtonClick.loadFromFile(Config::buttonClickSoundPath)) {
 			printf("Error loading button click file");
 		}
 	}

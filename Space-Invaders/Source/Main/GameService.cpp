@@ -25,6 +25,7 @@ namespace Main {
 	void GameService::showMainMenu()
 	{
 		setGameState(GameState::MAIN_MENU);
+		serviceLocator->getSoundService()->playBackroundMusic();
 	}
 
 	// Constructor: Initializes pointers to null.

@@ -4,47 +4,42 @@
 #include "../../Header/Global/Config.h"
 
 namespace Player {
-	void PlayerView::initializePlayerSprite()
+	void PlayerView::createUIElements()
 	{
-		if (playerTexture.loadFromFile(Global::Config::playerTexturePath)) {
-			playerSprite.setTexture(playerTexture);
-			scalePlayerSprite();
-		}
+		playerImage = new UIElement::ImageView();
 	}
-
-
-
-	void PlayerView::scalePlayerSprite()
+	void PlayerView::initializeImage()
 	{
-		playerSprite.setScale(
-			static_cast<float>(playerSpriteWidth) / playerSprite.getTexture()->getSize().x,
-			static_cast<float>(playerSpriteHeight) / playerSprite.getTexture()->getSize().y
-		);
+		playerImage->initialize(Global::Config::playerTexturePath, playerSpriteWidth, playerSpriteHeight, playerController->getPlayerPosition());
 	}
-
+	void PlayerView::destroy()
+	{
+	}
 	PlayerView::PlayerView()
 	{
-
+		createUIElements();
+		
 	}
 
 	PlayerView::~PlayerView()
 	{
+		destroy();
 	}
 
 	void PlayerView::initialize(PlayerController* controller)
 	{
 		playerController = controller;
-		gameWindow = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-		initializePlayerSprite();
+		initializeImage();
 	}
 
 	void PlayerView::update()
 	{
-		playerSprite.setPosition(playerController->getPlayerPosition());
+		playerImage->setPosition(playerController->getPlayerPosition());
+		playerImage->update();
 	}
 
 	void PlayerView::render()
 	{
-		gameWindow->draw(playerSprite);
+		playerImage->render();
 	}
 }
