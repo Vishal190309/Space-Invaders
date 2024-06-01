@@ -5,6 +5,7 @@
 #include "../../Header/Bullet/Controllers/ForstBulletController.h"
 #include "../../Header/Bullet/Controllers/TorpedoeController.h"
 #include "../../Header/Projectile/IProjectile.h"
+#include "../../Header/Global/ServiceLocator.h"
 
 
 namespace Bullet {
@@ -22,6 +23,20 @@ namespace Bullet {
 			new Controllers::ForstBulletController(type, ownerEntityType);
 			break;
 		}
+	}
+	bool BulletService::isValidBullet(int indexI, std::vector<Projectile::IProjectile*>& bulletList)
+	{
+		return indexI>=0 && indexI < bulletList.size() && bulletList[indexI] != nullptr;
+	}
+	void BulletService::destroyFlaggedBullets()
+	{
+		for (int i = 0; i < listOfFlaggedBullets.size(); i++) {
+			if (isValidBullet(i, listOfFlaggedBullets)) {
+				Global::ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<Collision::ICollider*>(listOfFlaggedBullets[i]));
+				delete(listOfFlaggedBullets[i]);
+			}
+		}
+		listOfFlaggedBullets.clear();
 	}
 	void BulletService::destroy()
 	{

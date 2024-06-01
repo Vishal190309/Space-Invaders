@@ -229,12 +229,7 @@ namespace Player {
 	}
 
 
-	void PlayerController::fireBullet()
-	{
-		Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::LASER_BULLET,
-			playerModel->getPlayerPosition() + playerModel->getPlayerBarrelOffset(),
-			Bullet::MovementDirection::UP,playerModel->getEntityType());
-	}
+	
 
 	const sf::Sprite& PlayerController::getColliderSprite()
 	{

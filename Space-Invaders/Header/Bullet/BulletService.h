@@ -9,8 +9,13 @@ namespace Bullet {
 	enum class MovementDirection;
 	class BulletService {
 	private:
+		std::vector<Projectile::IProjectile*> listOfFlaggedBullets;
 		std::vector<Projectile::IProjectile*> listOfProjectile;
 		BulletController* createBullet(BulletType type,Entity::EntityType ownerEntityType);
+
+		bool isValidBullet(int indexI, std::vector<Projectile::IProjectile*>& bulletList);
+		void destroyFlaggedBullets();
+
 		void destroy();
 
 	public:

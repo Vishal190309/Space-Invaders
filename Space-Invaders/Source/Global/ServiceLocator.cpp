@@ -16,6 +16,7 @@ namespace Global {
 		powerupService = nullptr;
 		timeService = nullptr;
 		uiService = nullptr;
+		collisionService = nullptr;
 		
 		createServices();
 	}
@@ -38,6 +39,7 @@ namespace Global {
 		timeService = new TimeService();
 		uiService = new UIService();
 		soundService = new SoundService();
+		collisionService = new CollisionService();
 		
 ;	}
 
@@ -54,6 +56,7 @@ namespace Global {
 		delete(timeService);
 		delete(uiService);
 		delete(soundService);
+		delete(collisionService);
 	}
 
 	ServiceLocator* ServiceLocator::getInstance()
@@ -75,6 +78,7 @@ namespace Global {
 		timeService->initialize();
 		uiService->initialize();
 		soundService->initialize();
+		collisionService->initialize();
 	}
 
 	void ServiceLocator::update()
@@ -88,6 +92,7 @@ namespace Global {
 			enemyService->update();
 			bulletService->update();
 			powerupService->update();
+			collisionService->update();
 		}
 		timeService->update();
 		uiService->update();
@@ -155,6 +160,10 @@ namespace Global {
 	SoundService* ServiceLocator::getSoundService()
 	{
 		return soundService;
+	}
+	CollisionService* ServiceLocator::getCollisionService()
+	{
+		return collisionService;
 	}
 	GameplayService* ServiceLocator::getGameplayService()
 	{
