@@ -60,7 +60,7 @@ namespace Enemy {
 			return static_cast<Powerup::PowerupType>(random_value);
 		}
 
-		UFOController::UFOController(EnemyType type) :EnemyController(type)
+		UFOController::UFOController(EnemyType type, Entity::EntityType entityType) :EnemyController(type,entityType)
 		{
 		}
 

@@ -15,7 +15,7 @@ namespace Enemy {
 			void fireBullet() override;
 
 		public:
-			ThunderSnakeController(EnemyType type);
+			ThunderSnakeController(EnemyType type, Entity::EntityType entityType);
 			~ThunderSnakeController();
 			void initialize() override;
 

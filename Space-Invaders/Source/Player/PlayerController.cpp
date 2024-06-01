@@ -8,11 +8,11 @@
 #include<algorithm>
 
 namespace Player {
-	PlayerController::PlayerController()
+	PlayerController::PlayerController(Entity::EntityType entityType)
 	{
 		playerView = new PlayerView();
-		playerModel = new PlayerModel();
-
+		playerModel = new PlayerModel(entityType);
+		
 	}
 
 	PlayerController::~PlayerController()
@@ -41,6 +41,11 @@ namespace Player {
 	sf::Vector2f PlayerController::getPlayerPosition()
 	{
 		return playerModel->getPlayerPosition();
+	}
+
+	Entity::EntityType PlayerController::getEntityType()
+	{
+		return playerModel->getEntityType();
 	}
 
 	void PlayerController::processPlayerInput()
@@ -84,7 +89,7 @@ namespace Player {
 	{
 		Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::LASER_BULLET,
 			playerModel->getPlayerPosition() + playerModel->getPlayerBarrelOffset(),
-			Bullet::MovementDirection::UP);
+			Bullet::MovementDirection::UP,playerModel->getEntityType());
 	}
 
 }

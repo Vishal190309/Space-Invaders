@@ -8,7 +8,7 @@ namespace Bullet {
 			float movementSpeed = 300.f;
 
 		public:
-			TorpedoeBulletController(BulletType);
+			TorpedoeBulletController(BulletType, Entity::EntityType);
 			~TorpedoeBulletController();
 
 			void initialize(sf::Vector2f position, MovementDirection direction) override;

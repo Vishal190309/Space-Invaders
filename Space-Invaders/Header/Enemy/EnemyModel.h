@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../Header/Entity/EntityConfig.h"
+
 
 namespace Enemy {
 	enum class EnemyType;
@@ -12,9 +14,11 @@ namespace Enemy {
 		MovementDirection enemyMovementDirection;
 		EnemyType enemyType;
 		EnemyState enemyState;
+		Entity::EntityType entityType;
+
 		
 	public:
-		EnemyModel(EnemyType);
+		EnemyModel(EnemyType, Entity::EntityType entityType);
 		~EnemyModel();
 
 		void initialize();
@@ -43,6 +47,7 @@ namespace Enemy {
 
 		EnemyState getEnemyState();
 		void setEnemyState(EnemyState State);
+		Entity::EntityType getEntityType();
 
 	};
 }

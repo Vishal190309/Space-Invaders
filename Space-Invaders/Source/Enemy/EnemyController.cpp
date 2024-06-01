@@ -93,9 +93,9 @@ namespace Enemy {
 			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 		}
 	}
-	EnemyController::EnemyController(EnemyType type)
+	EnemyController::EnemyController(EnemyType type, Entity::EntityType entityType)
 	{
-		enemyModel = new EnemyModel(type);
+		enemyModel = new EnemyModel(type, entityType);
 		enemyView = new EnemyView();
 		
 		
@@ -138,5 +138,9 @@ namespace Enemy {
 	EnemyType EnemyController::getEnemyType()
 	{
 		return enemyModel->getEnemyType();
+	}
+	Entity::EntityType EnemyController::getEntityType()
+	{
+		return enemyModel->getEntityType();
 	}
 }

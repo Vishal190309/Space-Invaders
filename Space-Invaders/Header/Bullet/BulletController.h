@@ -1,5 +1,6 @@
 #pragma once
 #include "../Projectile/IProjectile.h"
+#include "../../Header/Entity/EntityConfig.h"
 
 namespace Bullet {
 	enum class BulletType;
@@ -18,7 +19,7 @@ namespace Bullet {
 		void moveDown();
 		void handleOutOfBounds();
 	public:
-		BulletController(BulletType type);
+		BulletController(BulletType type, Entity::EntityType ownerEntityType);
 		virtual ~BulletController();
 
 		void initialize(sf::Vector2f position, Bullet::MovementDirection direction) override;
@@ -26,5 +27,6 @@ namespace Bullet {
 		void render() override;
 		sf::Vector2f getProjectilePosition() override;
 		BulletType getBulletType();
+		Entity::EntityType getOwnerEntityType();
 	};
 }

@@ -62,7 +62,7 @@ namespace Enemy {
 	
 	void EnemyService::spawnEnemy()
 	{
-		enemyController = createEnemy(getRandomEnemyType());
+		enemyController = createEnemy(getRandomEnemyType(),Entity::EntityType::ENEMY);
 		enemyController->initialize();
 		enemyList.push_back(enemyController);
 	}
@@ -72,24 +72,27 @@ namespace Enemy {
 		int randomEnemyType = std::rand() % 4;
 		return static_cast<Enemy::EnemyType>(randomEnemyType);
 	}
-	EnemyController* EnemyService::createEnemy(EnemyType type)
+	EnemyController* EnemyService::createEnemy(EnemyType type, Entity::EntityType entityType)
 	{
 		switch (type) {
 		case EnemyType::SUBZERO:
-			return new Controllers::SubZeroController(type);
+			return new Controllers::SubZeroController(type, entityType);
 			break;
 		case EnemyType::ZAPPER:
-			return new Controllers::ZapperController(type);
+			return new Controllers::ZapperController(type, entityType);
 			break;
 		case EnemyType::THUNDER_SNAKE:
-			return new Controllers::ThunderSnakeController(type);
+			return new Controllers::ThunderSnakeController(type, entityType);
 			break;
 		case EnemyType::UFO:
-			return new Controllers::UFOController(type);
+			return new Controllers::UFOController(type, entityType);
+			break;
+		default:
+			return new Controllers::SubZeroController(type, entityType);
 			break;
 			
 		}
-		return new Controllers::SubZeroController(type);
+		
 	}
 	void EnemyService::destroyEnemy(EnemyController* controller)
 	{

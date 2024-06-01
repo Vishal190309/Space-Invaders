@@ -27,10 +27,10 @@ namespace Enemy {
 		{
 			Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::FROST_BULLET
 				,enemyModel->getEnemyPosition()+ enemyModel->barrelPositionOffset
-				,Bullet::MovementDirection::DOWN);
+				,Bullet::MovementDirection::DOWN,enemyModel->getEntityType());
 		}
 		
-		SubZeroController::SubZeroController(EnemyType type) : EnemyController(type)
+		SubZeroController::SubZeroController(EnemyType type, Entity::EntityType entityType) : EnemyController(type,entityType)
 		{
 		}
 

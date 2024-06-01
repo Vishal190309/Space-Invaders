@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "../../Header/Entity/EntityConfig.h"
 
 namespace Player {
     enum class PlayerState //Our Enum
@@ -18,13 +19,14 @@ namespace Player {
         PlayerState playerState;
         int playerScore;
         const sf::Vector2f barrelPositionOffset = sf::Vector2f(20.f, -25.f);
+        Entity::EntityType entityType;
     public:
         const sf::Vector2f leftMostPosition = sf::Vector2f(50.f, 950.f);
         const sf::Vector2f rightMostPosition = sf::Vector2f(1800.f, 950.f);
 
         const float playerMovementSpeed =350.0f;
 
-        PlayerModel();
+        PlayerModel(Entity::EntityType entityType);
         ~PlayerModel();
 
         void initialize();
@@ -42,6 +44,7 @@ namespace Player {
         void setPlayerState(PlayerState state);
 
         sf::Vector2f getPlayerBarrelOffset();
+        Entity::EntityType getEntityType();
 
 
 

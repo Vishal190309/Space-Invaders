@@ -1,9 +1,10 @@
 #include "../../Header/Enemy/EnemyModel.h"
 #include "../../Header/Enemy/EnemyConfig.h"
 namespace Enemy {
-	EnemyModel::EnemyModel(EnemyType Type)
+	EnemyModel::EnemyModel(EnemyType Type, Entity::EntityType entityType)
 	{
 		enemyType = Type;
+		this->entityType = entityType;
 		
 	}
 	EnemyModel::~EnemyModel()
@@ -58,5 +59,9 @@ namespace Enemy {
 	void EnemyModel::setEnemyState(EnemyState State)
 	{
 		enemyState = State;
+	}
+	Entity::EntityType EnemyModel::getEntityType()
+	{
+		return entityType;
 	}
 }

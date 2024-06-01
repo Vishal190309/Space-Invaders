@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "../../Header/Entity/EntityConfig.h"
 
 namespace Player {
 	class PlayerView;
@@ -17,7 +18,7 @@ namespace Player {
 		void fireBullet();
 
 	public:
-		PlayerController();
+		PlayerController(Entity::EntityType entityType);
 		~PlayerController();
 
 		void initialize();
@@ -25,6 +26,7 @@ namespace Player {
 		void render();
 
 		sf::Vector2f getPlayerPosition();
+		Entity::EntityType getEntityType();
 
 	};
 }

@@ -40,9 +40,9 @@ namespace Bullet {
 			Global::ServiceLocator::getInstance()->getBulletService()->destroyBullet(this);
 		}
 	}
-	BulletController::BulletController(BulletType type)
+	BulletController::BulletController(BulletType type, Entity::EntityType ownerEntityType)
 	{
-		bulletModel = new BulletModel(type);
+		bulletModel = new BulletModel(type,ownerEntityType);
 		bulletView = new BulletView();
 	}
 	
@@ -74,5 +74,9 @@ namespace Bullet {
 	BulletType BulletController::getBulletType()
 	{
 		return bulletModel->getBulletType();
+	}
+	Entity::EntityType BulletController::getOwnerEntityType()
+	{
+		return bulletModel->getOwnerEntityType();
 	}
 }

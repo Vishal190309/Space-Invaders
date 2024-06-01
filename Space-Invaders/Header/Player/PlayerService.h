@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "../../Header/Event/EventService.h"
+#include "../../Header/Entity/EntityConfig.h"
 
 namespace Player {
 	class PlayerController;

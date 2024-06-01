@@ -1,7 +1,10 @@
 #include "../../Header/Player/PlayerModel.h"
 
 namespace Player {
-	PlayerModel::PlayerModel() { }
+	PlayerModel::PlayerModel(Entity::EntityType entityType)
+	{ 
+		this->entityType = entityType;
+	}
 
 	PlayerModel::~PlayerModel() { }
 
@@ -48,6 +51,11 @@ namespace Player {
 	sf::Vector2f PlayerModel::getPlayerBarrelOffset()
 	{
 		return barrelPositionOffset;
+	}
+
+	Entity::EntityType PlayerModel::getEntityType()
+	{
+		return entityType;
 	}
 	
 }

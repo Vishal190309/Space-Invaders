@@ -46,10 +46,10 @@ namespace Enemy {
 		{
 			Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::TORPEDO
 				, enemyModel->getEnemyPosition() + enemyModel->barrelPositionOffset
-				, Bullet::MovementDirection::DOWN);
+				, Bullet::MovementDirection::DOWN,enemyModel->getEntityType());
 		
 		}
-		ThunderSnakeController::ThunderSnakeController(EnemyType type):EnemyController(type)
+		ThunderSnakeController::ThunderSnakeController(EnemyType type, Entity::EntityType entityType):EnemyController(type,entityType)
 		{
 		}
 		ThunderSnakeController::~ThunderSnakeController()

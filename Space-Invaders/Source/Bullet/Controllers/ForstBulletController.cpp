@@ -3,7 +3,7 @@
 
 namespace Bullet {
 	namespace Controllers {
-		ForstBulletController::ForstBulletController(BulletType type):BulletController(type)
+		ForstBulletController::ForstBulletController(BulletType type, Entity::EntityType ownerEntityType):BulletController(type,ownerEntityType)
 		{
 		}
 		ForstBulletController::~ForstBulletController()

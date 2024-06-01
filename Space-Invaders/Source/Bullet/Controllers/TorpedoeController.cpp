@@ -2,7 +2,7 @@
 #include "../../../Header/Bullet/BulletModel.h"
 namespace Bullet {
 	namespace Controllers {
-		TorpedoeBulletController::TorpedoeBulletController(BulletType type) : BulletController(type)
+		TorpedoeBulletController::TorpedoeBulletController(BulletType type,  Entity::EntityType ownerEntityType) : BulletController(type, ownerEntityType)
 		{
 
 		}

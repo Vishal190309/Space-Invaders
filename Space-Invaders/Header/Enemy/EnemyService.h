@@ -1,5 +1,7 @@
 #pragma once
 #include <vector>
+#include "../../Header/Entity/EntityConfig.h"
+
 
 namespace Enemy {
 	class EnemyController;
@@ -13,7 +15,7 @@ namespace Enemy {
 		void processEnemySpawn();
 		void destroy();
 		EnemyType getRandomEnemyType();
-		EnemyController* createEnemy(EnemyType type);
+		EnemyController* createEnemy(EnemyType type, Entity::EntityType entityType);
 		EnemyController* enemyController;
 	public:
 		EnemyService();
