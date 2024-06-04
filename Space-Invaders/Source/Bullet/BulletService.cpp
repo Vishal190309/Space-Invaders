@@ -73,6 +73,7 @@ namespace Bullet {
 	{
 		BulletController* controller = createBullet(type,ownerEntityType);
 		controller->initialize(position, direction);
+		Global::ServiceLocator::getInstance()->getCollisionService()->addCollider(controller);
 		listOfProjectile.push_back(controller);
 	}
 	void BulletService::destroyBullet(BulletController* controller)

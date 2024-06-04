@@ -25,9 +25,9 @@ namespace Enemy {
 
 		void SubZeroController::fireBullet()
 		{
-			Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::FROST_BULLET
-				,enemyModel->getEnemyPosition()+ enemyModel->barrelPositionOffset
-				,Bullet::MovementDirection::DOWN,enemyModel->getEntityType());
+			//Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::FROST_BULLET
+			//	,enemyModel->getEnemyPosition()+ enemyModel->barrelPositionOffset
+			//	,Bullet::MovementDirection::DOWN,enemyModel->getEntityType());
 		}
 		
 		SubZeroController::SubZeroController(EnemyType type, Entity::EntityType entityType) : EnemyController(type,entityType)

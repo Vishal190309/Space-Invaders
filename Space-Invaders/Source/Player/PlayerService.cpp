@@ -17,6 +17,7 @@ namespace Player {
 	void PlayerService::initialize()
 	{
 		playerController->initialize();
+		Global::ServiceLocator::getInstance()->getCollisionService()->addCollider(playerController);
 	}
 
 	void PlayerService::update()

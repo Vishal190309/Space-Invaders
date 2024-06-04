@@ -78,6 +78,7 @@ namespace Powerup {
 
 		powerupController->initialize(position);
 		listOfPowerups.push_back(powerupController);
+		Global::ServiceLocator::getInstance()->getCollisionService()->addCollider(dynamic_cast<Collision::ICollider*>(powerupController));
 		return powerupController;
 	}
 	void PowerupService::destroyPowerup(PowerupController* powerupController)

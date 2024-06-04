@@ -61,9 +61,9 @@ namespace Enemy {
 		}
 		void ZapperController::fireBullet()
 		{
-			Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::LASER_BULLET
-				, enemyModel->getEnemyPosition() + enemyModel->barrelPositionOffset
-				, Bullet::MovementDirection::DOWN,enemyModel->getEntityType());
+			//Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::LASER_BULLET
+			//	, enemyModel->getEnemyPosition() + enemyModel->barrelPositionOffset
+			//	, Bullet::MovementDirection::DOWN,enemyModel->getEntityType());
 		}
 		ZapperController::ZapperController(EnemyType type, Entity::EntityType entityType) : EnemyController(type,entityType)
 		{

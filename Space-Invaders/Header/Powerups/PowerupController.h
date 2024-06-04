@@ -5,7 +5,7 @@ namespace Powerup {
 	enum class PowerupType;
 	class PowerupModel;
 	class PowerupView;
-	class PowerupController : public Collectible::ICollectible ,Collision::ICollider {
+	class PowerupController : public Collision::ICollider, public Collectible::ICollectible  {
 	protected:
 		PowerupModel* powerupModel;
 		PowerupView* powerupView;
