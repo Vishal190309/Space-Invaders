@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "../../Header/Entity/EntityConfig.h"
+#include "../../header/UI/Gameplay/GameplayUIController.h"
 
 namespace Player {
     enum class PlayerState //Our Enum
@@ -14,7 +15,13 @@ namespace Player {
     class PlayerModel
     {
     private:
+        friend class PlayerController;
+
+        friend void UI::GameplayUI::GameplayUIController::updateEnemiesKilledText();
+        friend void UI::GameplayUI::GameplayUIController::drawPlayerLives();
+
         const sf::Vector2f initialPlayerPosition = sf::Vector2f(950.f, 950.f);
+        const int maxPlayerLives = 3;
 
         sf::Vector2f playerPosition;
         PlayerState playerState;
@@ -24,6 +31,9 @@ namespace Player {
         bool bShield;
         bool bRapidFire;
         bool bTrippleLaser;
+
+        static int playerLives;
+        static int enemiesKilled;
     public:
         const sf::Vector2f leftMostPosition = sf::Vector2f(50.f, 950.f);
         const sf::Vector2f rightMostPosition = sf::Vector2f(1800.f, 950.f);

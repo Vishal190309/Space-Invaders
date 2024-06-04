@@ -100,6 +100,7 @@ namespace Enemy {
 	}
 	void EnemyController::destroy()
 	{
+		Global::ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1);
 		Global::ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 	}
 	EnemyController::EnemyController(EnemyType type, Entity::EntityType entityType)

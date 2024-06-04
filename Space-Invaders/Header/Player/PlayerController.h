@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "../../Header/Entity/EntityConfig.h"
 #include "../../Header/Collision/ICollider.h"
+#include "PlayerModel.h"
 
 namespace Player {
 	class PlayerView;
@@ -62,6 +63,9 @@ namespace Player {
 
 		const sf::Sprite& getColliderSprite();
 		void onCollision(ICollider* otherCollider);
+
+		void decreasePlayerLive();
+		inline void increaseEnemiesKilled(int val) { PlayerModel::enemiesKilled += val; }
 
 	};
 }

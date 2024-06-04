@@ -150,6 +150,7 @@ namespace Player {
 				playerModel->elapsedFreezeDuration = playerModel->freezeDuration;
 			}
 			else {
+				decreasePlayerLive();
 				Global::ServiceLocator::getInstance()->getGameplayService()->restart();
 			}
 			return true;
@@ -175,6 +176,7 @@ namespace Player {
 		Enemy::EnemyController* enemy_controller = dynamic_cast<Enemy::EnemyController*>(otherCollider);
 		if (enemy_controller)
 		{
+			decreasePlayerLive();
 			Global::ServiceLocator::getInstance()->getGameplayService()->restart();
 			return true;
 		}
@@ -245,6 +247,14 @@ namespace Player {
 			return;
 
 		processEnemyCollision(otherCollider);
+	}
+
+	void PlayerController::decreasePlayerLive()
+	{
+		PlayerModel::playerLives -= 1;
+		if (PlayerModel::playerLives <= 0) {
+			reset();
+		}
 	}
 
 	

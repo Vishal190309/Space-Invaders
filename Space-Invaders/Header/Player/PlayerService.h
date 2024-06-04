@@ -27,6 +27,7 @@ namespace Player {
 		void enableRapidFire();
 		void enableTrippleLaser();
 
+		void increaseEnemiesKilled(int val);
 		void reset();
 
 	};

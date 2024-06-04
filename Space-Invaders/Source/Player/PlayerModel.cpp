@@ -1,6 +1,9 @@
 #include "../../Header/Player/PlayerModel.h"
 
 namespace Player {
+
+	int PlayerModel::playerLives;
+	int PlayerModel::enemiesKilled;
 	PlayerModel::PlayerModel(Entity::EntityType entityType)
 	{ 
 		this->entityType = entityType;
@@ -14,6 +17,10 @@ namespace Player {
 	{
 		playerState = PlayerState::ALIVE; // set state to alive
 		playerPosition = initialPlayerPosition;
+
+		playerLives = maxPlayerLives;
+		enemiesKilled = 0;
+
 		bShield = false;
 		bTrippleLaser = false;
 		bRapidFire = false;
