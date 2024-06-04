@@ -3,6 +3,11 @@
 #include "../../Header/Enemy/EnemyModel.h"
 #include "../../Header/Enemy/EnemyConfig.h"
 #include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Bullet/BulletController.h"
+#include "../../Header/Entity/EntityConfig.h"
+#include "../../Header/Player/PlayerController.h"
+
+
 
 namespace Enemy {
 	using namespace Global;
@@ -93,6 +98,10 @@ namespace Enemy {
 			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 		}
 	}
+	void EnemyController::destroy()
+	{
+		Global::ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+	}
 	EnemyController::EnemyController(EnemyType type, Entity::EntityType entityType)
 	{
 		enemyModel = new EnemyModel(type, entityType);
@@ -143,4 +152,27 @@ namespace Enemy {
 	{
 		return enemyModel->getEntityType();
 	}
+	const sf::Sprite& EnemyController::getColliderSprite()
+	{
+		return enemyView->getEnemySprite();
+	}
+
+	void EnemyController::onCollision(ICollider* otherCollider)
+	{
+		BulletController* bullet_controller = dynamic_cast<BulletController*>(otherCollider);
+		if (bullet_controller && bullet_controller->getOwnerEntityType() != Entity::EntityType::ENEMY)
+		{
+			destroy();
+			return;
+		}
+
+		PlayerController* player_controller = dynamic_cast<PlayerController*>(otherCollider);
+		if (player_controller)
+		{
+			destroy();
+			return;
+		}
+	}
+
+	
 }

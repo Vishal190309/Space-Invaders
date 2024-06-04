@@ -36,4 +36,8 @@ namespace Element {
 			bunkerList[i]->render();
 		}
 	}
+	void ElementService::reset()
+	{
+		destroy();
+	}
 }

@@ -18,6 +18,8 @@ namespace Enemy {
             ~UFOController();
 
             void initialize() override;
+
+            void onCollision(ICollider* otherCollider) override;
 		};
 	}
 }

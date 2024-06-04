@@ -115,7 +115,7 @@ namespace Bullet {
 	}
 	const sf::Sprite& BulletController::getColliderSprite()
 	{
-		bulletView->getBulletSprite();
+		return bulletView->getBulletSprite();
 	}
 	void BulletController::onCollision(ICollider* otherCollider)
 	{

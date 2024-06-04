@@ -8,7 +8,9 @@ namespace Enemy {
 	enum class EnemyType;
 	class EnemyService {
 	private:
+		
 		std::vector<EnemyController*> enemyList;
+		std::vector<EnemyController*> flaggedEnemyList;
 		const float spawnDelay = 1.5f;
 		float spawnTimer;
 		void udpateSpawnTimer();
@@ -24,7 +26,8 @@ namespace Enemy {
 		void initialize();
 		void update();
 		void render();
-		
+		void destroyFlaggedEnemies();
+		void reset();
 		void spawnEnemy();
 		void destroyEnemy(EnemyController* controller);
 	};

@@ -46,6 +46,8 @@ namespace Bullet {
 	}
 	BulletService::BulletService()
 	{
+		listOfFlaggedBullets.clear();
+		listOfProjectile.clear();
 	}
 	BulletService::~BulletService()
 	{
@@ -59,6 +61,7 @@ namespace Bullet {
 		for (int i = 0; i < listOfProjectile.size(); i++) {
 			listOfProjectile[i]->update();
 		}
+		destroyFlaggedBullets();
 	}
 	void BulletService::render()
 	{
@@ -75,7 +78,14 @@ namespace Bullet {
 	void BulletService::destroyBullet(BulletController* controller)
 	{
 		
-		listOfProjectile.erase(std::remove(listOfProjectile.begin(), listOfProjectile.end(), controller), listOfProjectile.end());
-		delete(controller);
+		if (std::find(listOfFlaggedBullets.begin(), listOfFlaggedBullets.end(), controller) == listOfFlaggedBullets.end())
+		{
+			listOfFlaggedBullets.push_back(controller);
+			listOfProjectile.erase(std::remove(listOfProjectile.begin(), listOfProjectile.end(), controller), listOfProjectile.end());
+		}
+	}
+	void BulletService::reset()
+	{
+		destroy();
 	}
 }

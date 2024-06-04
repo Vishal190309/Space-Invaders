@@ -15,7 +15,6 @@ namespace Enemy {
 	EnemyService::EnemyService()
 	{
 		std::srand(static_cast<unsigned>(std::time(nullptr)));
-		enemyList.clear();
 	}
 	EnemyService::~EnemyService()
 	{
@@ -31,13 +30,29 @@ namespace Enemy {
 		processEnemySpawn();
 		for (int i = 0; i < enemyList.size();i++) {
 			enemyList[i]->update();
+
 		}
+		destroyFlaggedEnemies();
 	}
 	void EnemyService::render()
 	{
 		for (int i = 0; i < enemyList.size(); i++) {
 			enemyList[i]->render();
 		}
+	}
+	void EnemyService::destroyFlaggedEnemies()
+	{
+		for (int i = 0; i < flaggedEnemyList.size(); i++)
+		{
+			ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(flaggedEnemyList[i]));
+			delete (flaggedEnemyList[i]);
+		}
+		flaggedEnemyList.clear();
+	}
+	void EnemyService::reset()
+	{
+		destroy();
+		spawnTimer = 0.0f;
 	}
 	void EnemyService::udpateSpawnTimer()
 	{
@@ -96,8 +111,9 @@ namespace Enemy {
 	}
 	void EnemyService::destroyEnemy(EnemyController* controller)
 	{
-		enemyList.erase(std::remove(enemyList.begin(), enemyList.end(), controller), enemyList.end());
-		delete(controller);
+		dynamic_cast<ICollider*>(controller)->disableCollision();
+		flaggedEnemyList.push_back(controller);
+		flaggedEnemyList.erase(std::remove(flaggedEnemyList.begin(), flaggedEnemyList.end(), controller), flaggedEnemyList.end());
 	
 	}
 }
