@@ -69,6 +69,7 @@ namespace Enemy {
 	void EnemyService::destroy()
 	{
 		for (int i = 0; i < enemyList.size(); i++) {
+			ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<Collision::ICollider*>(enemyList[i]));
 			delete(enemyList[i]);
 		}
 
@@ -86,7 +87,7 @@ namespace Enemy {
 	EnemyType EnemyService::getRandomEnemyType()
 	{
 		int randomEnemyType = std::rand() % 4;
-		return static_cast<Enemy::EnemyType>(randomEnemyType);
+		return static_cast<Enemy::EnemyType>(3);
 	}
 	EnemyController* EnemyService::createEnemy(EnemyType type, Entity::EntityType entityType)
 	{
@@ -114,7 +115,7 @@ namespace Enemy {
 	{
 		dynamic_cast<ICollider*>(controller)->disableCollision();
 		flaggedEnemyList.push_back(controller);
-		flaggedEnemyList.erase(std::remove(flaggedEnemyList.begin(), flaggedEnemyList.end(), controller), flaggedEnemyList.end());
+		enemyList.erase(std::remove(enemyList.begin(), enemyList.end(), controller), enemyList.end());
 	
 	}
 }

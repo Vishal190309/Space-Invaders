@@ -79,6 +79,7 @@ namespace Enemy {
 			Bullet::BulletController* bulletController = dynamic_cast<Bullet::BulletController*>(otherCollider);
 			if (bulletController) {
 				Global::ServiceLocator::getInstance()->getPowerupService()->spawnPowerup(getRandomPowerupType(), enemyModel->getEnemyPosition());
+				destroy();
 				return;
 			}
 		}

@@ -44,9 +44,9 @@ namespace Enemy {
 		}
 		void ThunderSnakeController::fireBullet()
 		{
-			//Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::TORPEDO
-			//	, enemyModel->getEnemyPosition() + enemyModel->barrelPositionOffset
-			//	, Bullet::MovementDirection::DOWN,enemyModel->getEntityType());
+			Global::ServiceLocator::getInstance()->getBulletService()->spawnBullet(Bullet::BulletType::TORPEDO
+				, enemyModel->getEnemyPosition() + enemyModel->barrelPositionOffset
+				, Bullet::MovementDirection::DOWN,enemyModel->getEntityType());
 		
 		}
 		ThunderSnakeController::ThunderSnakeController(EnemyType type, Entity::EntityType entityType):EnemyController(type,entityType)

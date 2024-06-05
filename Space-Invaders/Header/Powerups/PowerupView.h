@@ -27,7 +27,7 @@ namespace Powerup {
 		void update();
 		void render();
 
-		sf::Sprite getPowerupSprite();
+		const sf::Sprite& getPowerupSprite();
 
 
 	};

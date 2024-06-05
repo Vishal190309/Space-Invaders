@@ -160,6 +160,12 @@ namespace Enemy {
 
 	void EnemyController::onCollision(ICollider* otherCollider)
 	{
+		PlayerController* player_controller = dynamic_cast<PlayerController*>(otherCollider);
+		if (player_controller)
+		{
+			destroy();
+			return;
+		}
 		BulletController* bullet_controller = dynamic_cast<BulletController*>(otherCollider);
 		if (bullet_controller && bullet_controller->getOwnerEntityType() != Entity::EntityType::ENEMY)
 		{
@@ -167,12 +173,7 @@ namespace Enemy {
 			return;
 		}
 
-		PlayerController* player_controller = dynamic_cast<PlayerController*>(otherCollider);
-		if (player_controller)
-		{
-			destroy();
-			return;
-		}
+		
 	}
 
 	

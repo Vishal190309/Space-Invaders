@@ -8,7 +8,6 @@ namespace Powerup
 
         RapidFireController::~RapidFireController() {}
 
-        void RapidFireController::onCollected() {}
         void RapidFireController::applyPowerup()
         {
             Global::ServiceLocator::getInstance()->getPlayerService()->enableRapidFire();

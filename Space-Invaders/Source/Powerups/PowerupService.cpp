@@ -16,16 +16,16 @@ namespace Powerup {
 		switch (powerupType)
 		{
 		case Powerup::PowerupType::SHIELD:
-			return new Controller::ShieldController(powerupType);
+			return new Controller::ShieldController(Powerup::PowerupType::SHIELD);
 			break;
 		case Powerup::PowerupType::RAPID_FIRE:
-			new Controller::RapidFireController(powerupType);
+			return new Controller::RapidFireController(Powerup::PowerupType::RAPID_FIRE);
 			break;
 		case Powerup::PowerupType::TRIPPLE_LASER:
-			new Controller::TrippleLaserController(powerupType);
+			return new Controller::TrippleLaserController(Powerup::PowerupType::TRIPPLE_LASER);
 			break;
 		case Powerup::PowerupType::OUTSCAL_BOMB:
-			new Controller::OutscalBombController(powerupType);
+			return new Controller::OutscalBombController(Powerup::PowerupType::OUTSCAL_BOMB);
 			break;
 		
 		}

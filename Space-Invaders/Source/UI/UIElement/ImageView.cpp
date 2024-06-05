@@ -30,10 +30,9 @@ namespace UI {
 		}
 		void ImageView::setScale(float xScale, float yScale)
 		{
-			sprite.setScale(
-				xScale / sprite.getTexture()->getSize().x,
-				yScale / sprite.getTexture()->getSize().y
-			);
+			float scaleX = xScale / sprite.getTexture()->getSize().x;
+			float scaleY = yScale / sprite.getTexture()->getSize().y;
+			sprite.setScale(scaleX , scaleY);
 		}
 		void ImageView::setPosition(sf::Vector2f position)
 		{
@@ -55,7 +54,7 @@ namespace UI {
 		}
 		void ImageView::setCentreAlinged()
 		{
-			float positionX = (gameWindow->getSize().x / 2 - sprite.getGlobalBounds().width / 2);
+			float positionX = (gameWindow->getSize().x / 2) -(sprite.getGlobalBounds().width / 2);
 			float positionY = sprite.getGlobalBounds().getPosition().y;
 
 			sprite.setPosition(positionX, positionY);

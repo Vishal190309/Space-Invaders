@@ -13,7 +13,7 @@ namespace Player {
 	private:
 		float elapsedShieldDuration;
 		float elapsedRapidFireDuration;
-		float elapsedTripperLaserDuration;
+		float elapsedTrippleLaserDuration;
 
 		float elapsedFireDuration;
 		float elapsedFreezeDuration;

@@ -8,7 +8,6 @@ namespace Powerup
 
         TrippleLaserController::~TrippleLaserController() {}
 
-        void TrippleLaserController::onCollected() {}
         void TrippleLaserController::applyPowerup()
         {
             Global::ServiceLocator::getInstance()->getPlayerService()->enableTrippleLaser();

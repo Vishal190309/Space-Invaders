@@ -26,7 +26,7 @@ namespace Bullet {
 		void update();
 		void render();
 
-		sf::Sprite getBulletSprite();
+		const sf::Sprite&  getBulletSprite();
 
 	};
 }

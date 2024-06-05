@@ -9,7 +9,6 @@ namespace Powerup
 
         OutscalBombController::~OutscalBombController() {}
 
-        void OutscalBombController::onCollected() {}
         void OutscalBombController::applyPowerup()
         {
             Global::ServiceLocator::getInstance()->getEnemyService()->reset();

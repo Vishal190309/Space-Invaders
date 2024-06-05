@@ -1,5 +1,4 @@
 #include "../../Header/Collision/CollisionService.h"
-
 namespace Collsion {
 
 }
@@ -32,10 +31,11 @@ void Collision::CollisionService::doCollision(int indexI, int indexJ)
 
 bool Collision::CollisionService::hasCollisionOccurred(int indexI, int indexJ)
 {
+
 	const sf::Sprite& collider_one_sprite = listOfColliders[indexI]->getColliderSprite();
 	const sf::Sprite& collider_two_sprite = listOfColliders[indexJ]->getColliderSprite();
-
-	return collider_one_sprite.getGlobalBounds().intersects(collider_two_sprite.getGlobalBounds());
+return collider_one_sprite.getGlobalBounds().intersects(collider_two_sprite.getGlobalBounds());
+	
 }
 
 bool Collision::CollisionService::areActiveColliders(int indexI, int indexJ)
@@ -61,7 +61,7 @@ void Collision::CollisionService::update()
 	processCollision();
 }
 
-void Collision::CollisionService::addCollider(ICollider* collider)
+void Collision::CollisionService::addCollider( ICollider* collider)
 {
 	listOfColliders.push_back(collider);
 }

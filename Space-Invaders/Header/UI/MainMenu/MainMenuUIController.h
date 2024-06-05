@@ -11,9 +11,9 @@ namespace UI {
 			const float buttonWidth = 400;
 			const float buttonHeight = 150;
 			
-			const float playButtonYPosition = 500.f;
-			const float instructionsButtonYPosition = 700.f;
-			const float quitButtonYPosition = 900.f;
+			const float playButtonYPosition = 400.f;
+			const float instructionsButtonYPosition = 600.f;
+			const float quitButtonYPosition = 800.f;
 			const float backgroundAlpha = 85.f;
 
 

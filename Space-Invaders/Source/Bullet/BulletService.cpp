@@ -69,12 +69,13 @@ namespace Bullet {
 			listOfProjectile[i]->render();
 		}
 	}
-	void BulletService::spawnBullet(BulletType type, sf::Vector2f position, MovementDirection direction, Entity::EntityType ownerEntityType)
+	BulletController* BulletService::spawnBullet(BulletType type, sf::Vector2f position, MovementDirection direction, Entity::EntityType ownerEntityType)
 	{
 		BulletController* controller = createBullet(type,ownerEntityType);
 		controller->initialize(position, direction);
-		Global::ServiceLocator::getInstance()->getCollisionService()->addCollider(controller);
+		Global::ServiceLocator::getInstance()->getCollisionService()->addCollider(dynamic_cast<Collision::ICollider*>(controller));
 		listOfProjectile.push_back(controller);
+		return controller;
 	}
 	void BulletService::destroyBullet(BulletController* controller)
 	{

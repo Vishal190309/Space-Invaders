@@ -71,15 +71,17 @@ namespace Global {
         void render(); 				//	Renders using the services.
 
         // Methods to Get Specific Services: 
-        Event::EventService* getEventService();   // Retrieve the EventService instance
+          // Retrieve the EventService instance
         GraphicService* getGraphicService();
+        TimeService* getTimeService();
+        Event::EventService* getEventService();
         GameplayService* getGameplayService();
         PlayerService* getPlayerService();
         ElementService* getElementService();
         EnemyService* getEnemyService();
         BulletService* getBulletService();
         PowerupService* getPowerupService();
-        TimeService* getTimeService();
+       
         UIService* getUIService();
         SoundService* getSoundService();
         CollisionService* getCollisionService();
