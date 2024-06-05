@@ -87,7 +87,7 @@ namespace Enemy {
 	EnemyType EnemyService::getRandomEnemyType()
 	{
 		int randomEnemyType = std::rand() % 4;
-		return static_cast<Enemy::EnemyType>(3);
+		return static_cast<Enemy::EnemyType>(randomEnemyType);
 	}
 	EnemyController* EnemyService::createEnemy(EnemyType type, Entity::EntityType entityType)
 	{
