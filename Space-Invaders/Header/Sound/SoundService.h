@@ -28,7 +28,7 @@ namespace Sound {
 
 	public:
 		void playSound(SoundType);
-		void playBackroundMusic();
+		void playBackgroundMusic();
 		void initialize();
 
 	};

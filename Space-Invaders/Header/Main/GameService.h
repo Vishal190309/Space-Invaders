@@ -5,6 +5,7 @@
 namespace Main {
 	enum class GameState {
 		BOOT,
+		SPLASH_SCREEN,
 		MAIN_MENU,
 		GAMEPLAY
 	};
@@ -14,10 +15,10 @@ namespace Main {
 		sf::RenderWindow* gameWindow;
 		void initialize();
 		void initializeVariable();
+		void showSplashScreen();
 		void destroy();
 		static GameState currentState;
 
-		void showMainMenu();
 
 	public:
 		GameService();

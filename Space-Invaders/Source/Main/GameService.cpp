@@ -9,7 +9,7 @@ namespace Main {
 
 		serviceLocator->initialize();
 		initializeVariable();
-		showMainMenu();
+		showSplashScreen();
 
 	}
 
@@ -18,15 +18,16 @@ namespace Main {
 		gameWindow = serviceLocator->getGraphicService()->getGameWindow();
 	}
 
+	void GameService::showSplashScreen()
+	{
+		setGameState(GameState::SPLASH_SCREEN);
+		Global::ServiceLocator::getInstance()->getUIService()->showUI();
+	}
+
 	void GameService::destroy()
 	{
 	}
 
-	void GameService::showMainMenu()
-	{
-		setGameState(GameState::MAIN_MENU);
-		serviceLocator->getSoundService()->playBackroundMusic();
-	}
 
 	// Constructor: Initializes pointers to null.
 	GameService::GameService() {

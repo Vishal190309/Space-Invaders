@@ -52,7 +52,7 @@ namespace Sound {
 
 		
 	}
-	void SoundService::playBackroundMusic()
+	void SoundService::playBackgroundMusic()
 	{
 		
 			backgroundMusic.setVolume(volume);
