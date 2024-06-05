@@ -62,32 +62,38 @@ namespace Player {
 
 	void PlayerController::enableShield()
 	{
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::POWERUP_ENABLED);
 		elapsedShieldDuration = playerModel->shiledPowerupDuration;
 		playerModel->setShieldState(true);
 	}
 
 	void PlayerController::enableRapidFire()
 	{
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::POWERUP_ENABLED);
 		elapsedRapidFireDuration = playerModel->rapidFirePowerupDuration;
 		playerModel->setRapidFireState(true);
 	}
 
 	void PlayerController::enableTrippleLaser()
 	{
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::POWERUP_ENABLED);
 		elapsedTrippleLaserDuration = playerModel->trippleLaserPowerupDuration;
 		playerModel->setTrippleLaserState(true);
 	}
 
 	void PlayerController::disableShield()
 	{
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::POWERUP_DISABLED);
 		playerModel->setShieldState(false);
 	}
 	void PlayerController::disableRapidFire()
 	{
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::POWERUP_DISABLED);
 		playerModel->setRapidFireState(false);
 	}
 	void PlayerController::disableTrippleLaser()
 	{
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::POWERUP_DISABLED);
 		playerModel->setTrippleLaserState(false);
 	}
 
@@ -291,6 +297,7 @@ namespace Player {
 			fireBullet(bulletPosition + playerModel->secondWeaponPositionOffset);
 			fireBullet(bulletPosition + playerModel->thirdWeaponPositionOffset);
 		}
+		Global::ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BULLET_FIRE);
 	}
 
 	void PlayerController::fireBullet(sf::Vector2f position)
