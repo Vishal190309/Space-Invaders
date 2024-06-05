@@ -42,4 +42,8 @@ namespace Player {
 	{
 		playerImage->render();
 	}
+	const sf::Sprite& PlayerView::getPlayerSprite()
+	{
+		return playerImage->getSprite();
+	}
 }

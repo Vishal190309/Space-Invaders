@@ -59,4 +59,8 @@ namespace Bullet {
 	{
 		bulletImage->render();
 	}
+	const sf::Sprite&  BulletView::getBulletSprite()
+	{
+		return bulletImage->getSprite();
+	}
 }

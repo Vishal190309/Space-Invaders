@@ -20,7 +20,10 @@ namespace Element
 																Bunker::BunkerData(sf::Vector2f(1730.0f, 800.f)) };
 
 		std::vector<Bunker::BunkerController*> bunkerList;
+		std::vector<Bunker::BunkerController*> flaggedBunkerList;
 
+		void spawnBunkers();
+		void destroyFlaggedBunkerList();
 		void destroy();
 
 	public:
@@ -30,5 +33,8 @@ namespace Element
 		void initialize();
 		void update();
 		void render();
+		void reset();
+
+		void destroyBunker(Bunker::BunkerController* bunkerController);
 	};
 }

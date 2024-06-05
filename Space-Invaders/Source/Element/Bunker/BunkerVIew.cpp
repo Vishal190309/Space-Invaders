@@ -44,5 +44,9 @@ namespace Element {
 		{
 			bunkerImage->render();
 		}
+		const sf::Sprite& BunkerView::getBunkerSprite()
+		{
+			return bunkerImage->getSprite();
+		}
 	}
 }

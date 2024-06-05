@@ -8,7 +8,7 @@ namespace Bullet {
 			float movementSpeed = 700.f;
 
 		public:
-			ForstBulletController(BulletType);
+			ForstBulletController(BulletType,Entity::EntityType);
 			~ForstBulletController();
 
 			void initialize(sf::Vector2f position, MovementDirection direction) override;

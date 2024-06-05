@@ -14,10 +14,12 @@ namespace Enemy {
             Powerup::PowerupType getRandomPowerupType();
 
         public:
-            UFOController(EnemyType type);
+            UFOController(EnemyType type, Entity::EntityType entityType);
             ~UFOController();
 
             void initialize() override;
+
+            void onCollision(ICollider* otherCollider) override;
 		};
 	}
 }

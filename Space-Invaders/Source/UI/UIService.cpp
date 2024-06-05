@@ -8,29 +8,35 @@
 namespace UI {
 	using namespace Main;
 	using namespace MainMenu;
+	using namespace GameplayUI;
 	using namespace Interface;
 	using namespace UIElement;
 	void UIService::createControllers()
 	{
-		mainMenuController = new MainMenuUIController();
+		mainMenuUIController = new MainMenuUIController();
+		gameplayUIController = new GameplayUIController();
 	}
 
 	void UIService::initializeControllers()
 	{
-		mainMenuController->initialize();
+		mainMenuUIController->initialize();
+		gameplayUIController->initialize();
 	}
 
 	void UIService::destroy()
 	{
-		delete(mainMenuController);
+		delete(mainMenuUIController);
+		delete(gameplayUIController);
 	}
 
 	Interface::IUIController* UIService::getCurrentUIController()
 	{
 		switch (GameService::getGameState()) {
 		case GameState::MAIN_MENU:
-			return mainMenuController;
+			return mainMenuUIController;
 			break;
+		case GameState::GAMEPLAY:
+			return gameplayUIController;
 		default:
 			return nullptr;
 		}
@@ -38,7 +44,8 @@ namespace UI {
 
 	UIService::UIService()
 	{
-		mainMenuController = nullptr;
+		mainMenuUIController = nullptr;
+		gameplayUIController = nullptr;
 		createControllers();
 	}
 

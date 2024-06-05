@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Bullet\BulletConfig.cpp" />
     <ClCompile Include="Source\Bullet\BulletService.cpp" />
     <ClCompile Include="Source\Bullet\Controllers\ForstBulletController.cpp" />
     <ClCompile Include="Source\Bullet\Controllers\LaserBulletController.cpp" />
@@ -139,6 +140,8 @@
     <ClCompile Include="Source\Bullet\BulletModel.cpp" />
     <ClCompile Include="Source\Bullet\BulletView.cpp" />
     <ClCompile Include="Source\Bullet\Controllers\TorpedoeController.cpp" />
+    <ClCompile Include="Source\Collision\CollisionService.cpp" />
+    <ClCompile Include="Source\Collision\ICollider.cpp" />
     <ClCompile Include="Source\Element\Bunker\BunkerController.cpp" />
     <ClCompile Include="Source\Element\Bunker\BunkerModel.cpp" />
     <ClCompile Include="Source\Element\Bunker\BunkerVIew.cpp" />
@@ -174,6 +177,7 @@
     <ClCompile Include="Source\Powerups\PowerupView.cpp" />
     <ClCompile Include="Source\Sound\SoundService.cpp" />
     <ClCompile Include="Source\Time\TimeService.cpp" />
+    <ClCompile Include="Source\UI\GameplayUI\GameplayUIController.cpp" />
     <ClCompile Include="Source\UI\MainMenu\MainMenuUIController.cpp" />
     <ClCompile Include="Source\UI\UIElement\ButtonView.cpp" />
     <ClCompile Include="Source\UI\UIElement\ImageView.cpp" />
@@ -191,6 +195,8 @@
     <ClInclude Include="Header\Bullet\Controllers\LaserBulletController.h" />
     <ClInclude Include="Header\Bullet\Controllers\TorpedoeController.h" />
     <ClInclude Include="Header\Collectible\ICollectible.h" />
+    <ClInclude Include="Header\Collision\CollisionService.h" />
+    <ClInclude Include="Header\Collision\ICollider.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerController.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerModel.h" />
     <ClInclude Include="Header\Element\Bunker\BunkerView.h" />
@@ -204,6 +210,7 @@
     <ClInclude Include="Header\Enemy\EnemyService.h" />
     <ClInclude Include="Header\Enemy\EnemyController.h" />
     <ClInclude Include="Header\Enemy\EnemyView.h" />
+    <ClInclude Include="Header\Entity\EntityConfig.h" />
     <ClInclude Include="Header\Event\EventService.h" />
     <ClInclude Include="Header\Gameplay\GameplayControlller.h" />
     <ClInclude Include="Header\Gameplay\GameplayService.h" />
@@ -228,6 +235,7 @@
     <ClInclude Include="Header\Projectile\IProjectile.h" />
     <ClInclude Include="Header\Sound\SoundService.h" />
     <ClInclude Include="Header\Time\TimeService.h" />
+    <ClInclude Include="Header\UI\Gameplay\GameplayUIController.h" />
     <ClInclude Include="Header\UI\Interface\IUIController.h" />
     <ClInclude Include="Header\UI\MainMenu\MainMenuUIController.h" />
     <ClInclude Include="Header\UI\UIElement\ButtonView.h" />

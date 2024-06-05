@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "../EnemyController.h"
 #include "../../../Header/Bullet/BulletConfig.h"
+
 namespace Enemy {
 
     namespace Controllers {
@@ -15,7 +16,7 @@ namespace Enemy {
             void fireBullet() override;
 
         public:
-            ZapperController(EnemyType type);
+            ZapperController(EnemyType type, Entity::EntityType entityType);
             ~ZapperController();
 
             void initialize() override;

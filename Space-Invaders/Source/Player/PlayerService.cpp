@@ -6,7 +6,7 @@ namespace Player {
 
 	PlayerService::PlayerService()
 	{
-		playerController = new PlayerController();
+		playerController = new PlayerController(Entity::EntityType::PLAYER);
 	}
 
 	PlayerService::~PlayerService() {
@@ -17,6 +17,7 @@ namespace Player {
 	void PlayerService::initialize()
 	{
 		playerController->initialize();
+		Global::ServiceLocator::getInstance()->getCollisionService()->addCollider(playerController);
 	}
 
 	void PlayerService::update()
@@ -27,6 +28,26 @@ namespace Player {
 	void PlayerService::render()
 	{
 		playerController->render();
+	}
+	void PlayerService::enableShield()
+	{
+		playerController->enableShield();
+	}
+	void PlayerService::enableRapidFire()
+	{
+		playerController->enableRapidFire();
+	}
+	void PlayerService::enableTrippleLaser()
+	{
+		playerController->enableTrippleLaser();
+	}
+	void PlayerService::increaseEnemiesKilled(int val)
+	{
+		playerController->increaseEnemiesKilled(val);
+	}
+	void PlayerService::reset()
+	{
+		playerController->reset();
 	}
 }
 

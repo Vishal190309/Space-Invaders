@@ -12,7 +12,7 @@ namespace Enemy {
 			void fireBullet() override;
 
 		public:
-			SubZeroController(EnemyType type);
+			SubZeroController(EnemyType type, Entity::EntityType entityType);
 			~SubZeroController();
 			void initialize() override;
 

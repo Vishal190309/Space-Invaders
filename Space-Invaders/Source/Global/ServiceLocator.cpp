@@ -16,6 +16,7 @@ namespace Global {
 		powerupService = nullptr;
 		timeService = nullptr;
 		uiService = nullptr;
+		collisionService = nullptr;
 		
 		createServices();
 	}
@@ -28,6 +29,7 @@ namespace Global {
 	void ServiceLocator::createServices()
 	{
 		graphicService = new GraphicService();
+		timeService = new TimeService();
 		eventService = new Event::EventService();
 		gameplayService = new GameplayService();
 		playerService = new PlayerService();
@@ -35,15 +37,17 @@ namespace Global {
 		enemyService = new EnemyService();
 		bulletService = new BulletService();
 		powerupService = new PowerupService();
-		timeService = new TimeService();
+		
 		uiService = new UIService();
 		soundService = new SoundService();
+		collisionService = new CollisionService();
 		
 ;	}
 
 	void ServiceLocator::clearAllServices()
 	{
 		delete(graphicService);
+		delete(timeService);
 		delete(eventService);
 		delete(gameplayService);
 		delete(playerService);
@@ -51,9 +55,10 @@ namespace Global {
 		delete(enemyService);
 		delete(bulletService);
 		delete(powerupService);
-		delete(timeService);
+		
 		delete(uiService);
 		delete(soundService);
+		delete(collisionService);
 	}
 
 	ServiceLocator* ServiceLocator::getInstance()
@@ -61,10 +66,11 @@ namespace Global {
 		static ServiceLocator instance;
 		return &instance;
 	}
-
+	
 	void ServiceLocator::initialize()
 	{
 		graphicService->initialize();
+		timeService->initialize();
 		eventService->initialize();
 		gameplayService->initialize();
 		playerService->initialize();
@@ -72,15 +78,17 @@ namespace Global {
 		enemyService->initialize();
 		bulletService->initialize();
 		powerupService->initialize();
-		timeService->initialize();
 		uiService->initialize();
 		soundService->initialize();
+		collisionService->initialize();
 	}
 
 	void ServiceLocator::update()
 	{
 		graphicService->update();
+		timeService->update();
 		eventService->update();
+
 		if (GameService::getGameState() == GameState::GAMEPLAY) {
 			gameplayService->update();
 			playerService->update();
@@ -88,8 +96,9 @@ namespace Global {
 			enemyService->update();
 			bulletService->update();
 			powerupService->update();
+			collisionService->update();
 		}
-		timeService->update();
+		
 		uiService->update();
 	}
 
@@ -155,6 +164,10 @@ namespace Global {
 	SoundService* ServiceLocator::getSoundService()
 	{
 		return soundService;
+	}
+	CollisionService* ServiceLocator::getCollisionService()
+	{
+		return collisionService;
 	}
 	GameplayService* ServiceLocator::getGameplayService()
 	{

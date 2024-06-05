@@ -81,7 +81,8 @@ namespace UI
         {
             sf::RenderWindow* gameWindow = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
             backgroundImage->initialize(Config::backgroundTexturePath, gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(0.f, 0.f));
-            backgroundImage->setImageAlpha(backgroundAlpha);
+           // backgroundImage->setImageAlpha(backgroundAlpha);
+            
         }
 
         void MainMenuUIController::initializeButtons()

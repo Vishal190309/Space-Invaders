@@ -4,23 +4,28 @@
 #include "../../Header/Powerups/Controllers/OutscalBombController.h"
 #include "../../Header/Powerups/Controllers/RapidFireController.h"
 #include "../../Header/Powerups/Controllers/TrippleLaserController.h"
+#include "../../Header/Global/ServiceLocator.h"
+#include "../../Header/Collision/ICollider.h"
+#include "../../Header/Collision/CollisionService.h"
+#include "../../Header/Powerups/PowerupController.h"
 
 namespace Powerup {
+
 	PowerupController* PowerupService::createPowerup(PowerupType powerupType)
 	{
 		switch (powerupType)
 		{
 		case Powerup::PowerupType::SHIELD:
-			return new Controller::ShieldController(powerupType);
+			return new Controller::ShieldController(Powerup::PowerupType::SHIELD);
 			break;
 		case Powerup::PowerupType::RAPID_FIRE:
-			new Controller::RapidFireController(powerupType);
+			return new Controller::RapidFireController(Powerup::PowerupType::RAPID_FIRE);
 			break;
 		case Powerup::PowerupType::TRIPPLE_LASER:
-			new Controller::TrippleLaserController(powerupType);
+			return new Controller::TrippleLaserController(Powerup::PowerupType::TRIPPLE_LASER);
 			break;
 		case Powerup::PowerupType::OUTSCAL_BOMB:
-			new Controller::OutscalBombController(powerupType);
+			return new Controller::OutscalBombController(Powerup::PowerupType::OUTSCAL_BOMB);
 			break;
 		
 		}
@@ -31,6 +36,16 @@ namespace Powerup {
 		for (int i = 0; i < listOfPowerups.size(); i++) {
 			delete(listOfPowerups[i]);
 		}
+	}
+	void PowerupService::destroyFlaggedPowerups()
+	{
+		for (int i = 0; i < listOfFlaggedPowerups.size(); i++) {
+			
+			Global::ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<Collision::ICollider*>(listOfFlaggedPowerups[i]));
+			delete(listOfFlaggedPowerups[i]);
+		}
+		
+		listOfFlaggedPowerups.clear();
 	}
 	PowerupService::PowerupService()
 	{
@@ -49,6 +64,7 @@ namespace Powerup {
 		for (int i = 0; i < listOfPowerups.size(); i++) {
 			listOfPowerups[i]->update();
 		}
+		destroyFlaggedPowerups();
 	}
 	void PowerupService::render()
 	{
@@ -62,11 +78,14 @@ namespace Powerup {
 
 		powerupController->initialize(position);
 		listOfPowerups.push_back(powerupController);
+		Global::ServiceLocator::getInstance()->getCollisionService()->addCollider(dynamic_cast<Collision::ICollider*>(powerupController));
 		return powerupController;
 	}
 	void PowerupService::destroyPowerup(PowerupController* powerupController)
 	{
+		Global::ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<Collision::ICollider*>(powerupController));
+
+		listOfFlaggedPowerups.push_back(powerupController);
 		listOfPowerups.erase(std::remove(listOfPowerups.begin(), listOfPowerups.end(), powerupController), listOfPowerups.end());
-		delete(powerupController);
 	}
 }

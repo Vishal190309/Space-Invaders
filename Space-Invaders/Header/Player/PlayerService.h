@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "../../Header/Event/EventService.h"
+#include "../../Header/Entity/EntityConfig.h"
 
 namespace Player {
 	class PlayerController;
@@ -21,6 +22,13 @@ namespace Player {
 		void initialize();
 		void update();
 		void render();
+
+		void enableShield();
+		void enableRapidFire();
+		void enableTrippleLaser();
+
+		void increaseEnemiesKilled(int val);
+		void reset();
 
 	};
 }

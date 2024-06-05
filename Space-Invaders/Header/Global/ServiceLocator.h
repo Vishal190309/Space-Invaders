@@ -10,6 +10,7 @@
 #include "../../Header/Sound/SoundService.h"
 #include "../../Header/Bullet/BulletService.h"
 #include "../../Header/Powerups/PowerupService.h"
+#include "../../Header/Collision/CollisionService.h"
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
 // include relevant headers files
@@ -25,6 +26,7 @@ namespace Global {
     using namespace Element;
     using namespace Powerup;
     using namespace Sound;
+    using namespace Collision;
     class ServiceLocator
     {
     private:
@@ -41,6 +43,7 @@ namespace Global {
         TimeService* timeService;
         UIService* uiService;
         SoundService* soundService;
+        CollisionService* collisionService;
        
         // ..........................
         // ..........................
@@ -68,17 +71,20 @@ namespace Global {
         void render(); 				//	Renders using the services.
 
         // Methods to Get Specific Services: 
-        Event::EventService* getEventService();   // Retrieve the EventService instance
+          // Retrieve the EventService instance
         GraphicService* getGraphicService();
+        TimeService* getTimeService();
+        Event::EventService* getEventService();
         GameplayService* getGameplayService();
         PlayerService* getPlayerService();
         ElementService* getElementService();
         EnemyService* getEnemyService();
         BulletService* getBulletService();
         PowerupService* getPowerupService();
-        TimeService* getTimeService();
+       
         UIService* getUIService();
         SoundService* getSoundService();
+        CollisionService* getCollisionService();
        
 
     };
