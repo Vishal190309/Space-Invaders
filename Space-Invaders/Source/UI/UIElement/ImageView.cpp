@@ -28,12 +28,24 @@ namespace UI {
 				sprite.setTexture(texture);
 			}
 		}
+		void ImageView::setTextureRect(sf::IntRect textureRect)
+		{
+			sprite.setTextureRect(textureRect);
+		}
+		
 		void ImageView::setScale(float xScale, float yScale)
 		{
 			float scaleX = xScale / sprite.getTexture()->getSize().x;
 			float scaleY = yScale / sprite.getTexture()->getSize().y;
 			sprite.setScale(scaleX , scaleY);
 		}
+		void ImageView::setScale(float width, float height, float tileWidth, float tileHeight)
+		{
+			float scaleX = width / tileWidth;
+			float scaleY = height / tileHeight;
+			sprite.setScale(scaleX, scaleY);
+		}
+		
 		void ImageView::setPosition(sf::Vector2f position)
 		{
 			sprite.setPosition(position);
@@ -59,6 +71,7 @@ namespace UI {
 
 			sprite.setPosition(positionX, positionY);
 		}
+		
 		const sf::Sprite& ImageView::getSprite()
 		{
 			return sprite;

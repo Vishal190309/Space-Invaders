@@ -30,6 +30,7 @@ namespace Global
 		static const sf::String instructionsButtonTexturePath;
 		static const sf::String quitButtonTexturePath;
 		static const sf::String menuButtonTexturePath;
+		static const sf::String explostionTexturePath;
 
 		static const sf::String bubbleBobbleFontPath;
 		static const sf::String DS_DIGIBFontPath;
@@ -39,5 +40,7 @@ namespace Global
 		static const sf::String bulletFireSoundPath;
 		static const sf::String powerupEnabledSoundPath;
 		static const sf::String powerupDisabledSoundPath;
+		static const sf::String explosionSoundPath;
+		
 	};
 }
