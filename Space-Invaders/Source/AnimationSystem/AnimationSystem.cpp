@@ -53,6 +53,6 @@ namespace Animation {
 	}
 	void AnimationSystem::destroy()
 	{
-		Global::ServiceLocator::getInstance()->getAnimationService()->destroyAnimationSystem(this);
+		Global::ServiceLocator::getInstance()->getAnimationService()->destroyAnimation(this);
 	}
 }

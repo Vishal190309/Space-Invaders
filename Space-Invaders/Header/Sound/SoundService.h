@@ -16,6 +16,8 @@ namespace Sound {
 		sf::Music backgroundMusic;
 		sf::Sound soundEffect;
 		sf::Sound powerupSoundEffect;
+		sf::Sound destroySoundEffect;
+
 
 		sf::SoundBuffer bufferButtonClick;
 
@@ -23,6 +25,7 @@ namespace Sound {
 
 		sf::SoundBuffer bufferPowerupEnabled;
 		sf::SoundBuffer bufferPowerupDisabled;
+		sf::SoundBuffer bufferDestroySoundBuffer;
 		void loadBackgroundMusicFromFile();
 		void loadSoundFromFile();
 

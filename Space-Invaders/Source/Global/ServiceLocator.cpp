@@ -179,7 +179,7 @@ namespace Global {
 	{
 		return gameplayService;
 	}
-	AnimationService* ServiceLocator::getAnimaionService()
+	AnimationService* ServiceLocator::getAnimationService()
 	{
 		return animationService;
 	}

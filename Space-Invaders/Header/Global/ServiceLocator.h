@@ -79,7 +79,7 @@ namespace Global {
         TimeService* getTimeService();
         Event::EventService* getEventService();
         GameplayService* getGameplayService();
-        AnimationService* getAnimaionService();
+        AnimationService* getAnimationService();
         PlayerService* getPlayerService();
         ElementService* getElementService();
         EnemyService* getEnemyService();
