@@ -46,6 +46,7 @@ namespace Global
 
 	const sf::String Config::menuButtonTexturePath = "assets/textures/menu_button.png";
 
+	const sf::String Config::explostionTexturePath = "assets/texture/explosion.png";
 
 	const sf::String Config::bubbleBobbleFontPath = "assets/fonts/bubbleBobble.ttf";
 
@@ -62,5 +63,7 @@ namespace Global
 
 	const sf::String Config::powerupEnabledSoundPath = "assets/sounds/powerup_enabled.ogg";
 
-	const sf::String Config::powerupDisabledSoundPath = "assets/sounds/powerup_disabled.ogg";
+	const sf::String Config::powerupDisabledSoundPath = "assets/sounds/powerup_disabled.ogg"
+
+		
 }
