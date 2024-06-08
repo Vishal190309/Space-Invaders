@@ -5,24 +5,26 @@
 
 namespace UI {
 	namespace SplashScreenUI {
+		void SplashScreenUIController::initializeBackgroundImage()
+		{
+			sf::RenderWindow* gameWindow = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+			backgroundImage->initialize(Global::Config::backgroundTexturePath, gameWindow->getSize().x, gameWindow->getSize().y, sf::Vector2f(0.f, 0.f));
+		}
 		void SplashScreenUIController::initializeOutscalLogo()
 		{
 			outscaleLogoView->initialize(Global::Config::outscalLogoTexturePath, logoWidth, logoHeight, getLogoPosition());
 		}
-		void SplashScreenUIController::updateTimer()
+		void SplashScreenUIController::fadeInAnimationCallback()
 		{
-			elapsedDuration += Global::ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
-			
+			outscaleLogoView->playAnimation(UI::UIElement::AnimationType::FADE_OUT, logoAnimationDuration, std::bind(&SplashScreenUIController::fadeOutAnimationCallback, this));
 		}
-		void SplashScreenUIController::showMainMenu()
+		void SplashScreenUIController::fadeOutAnimationCallback()
 		{
-			if (elapsedDuration >= splashScreenDuration)
-			{
-				Global::ServiceLocator::getInstance()->getSoundService()->playBackgroundMusic();
-				Main::GameService::setGameState(Main::GameState::MAIN_MENU);
-			}
-
+			Global::ServiceLocator::getInstance()->getSoundService()->playBackgroundMusic();
+			Main::GameService::setGameState(Main::GameState::MAIN_MENU);
 		}
+		
+		
 		sf::Vector2f SplashScreenUIController::getLogoPosition()
 		{
 			sf::RenderWindow* game_window = Global::ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
@@ -34,7 +36,8 @@ namespace UI {
 		}
 		SplashScreenUIController::SplashScreenUIController()
 		{
-			outscaleLogoView = new UIElement::ImageView();
+			backgroundImage = new UIElement::ImageView();
+			outscaleLogoView = new UIElement::AnimatedImageView();
 		}
 		SplashScreenUIController::~SplashScreenUIController()
 		{
@@ -42,20 +45,23 @@ namespace UI {
 		}
 		void SplashScreenUIController::initialize()
 		{
+			initializeBackgroundImage();
 			initializeOutscalLogo();
 		}
 		void SplashScreenUIController::update()
 		{
-			updateTimer();
-			showMainMenu();
+			backgroundImage->update();
+			outscaleLogoView->update();
 		}
 		void SplashScreenUIController::render()
 		{
+			backgroundImage->render();
 			outscaleLogoView->render();
 		}
 		void SplashScreenUIController::show()
 		{
-			
+			backgroundImage->show();
+			outscaleLogoView->playAnimation(UI::UIElement::AnimationType::FADE_IN, logoAnimationDuration, std::bind(&SplashScreenUIController::fadeInAnimationCallback, this));
 		}
 	}
 }

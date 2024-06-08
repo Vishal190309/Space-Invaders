@@ -42,7 +42,7 @@ namespace UI {
 		}
 		void AnimatedImageView::fadeOut()
 		{
-			float alpha = std::min(0.f,1.f- elapsedDuration / animationDuration);
+			float alpha = std::max(0.f,1.f- (elapsedDuration / animationDuration));
 			sprite.setColor(sf::Color(255, 255, 255, static_cast<sf::Uint8>(alpha * 255)));
 		}
 		void AnimatedImageView::reset()
