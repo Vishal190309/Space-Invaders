@@ -15,12 +15,15 @@ namespace UI {
 			virtual void update() override;
 			virtual void render() override;
 			virtual void setTexture(sf::String texturePath);
+			virtual void setTextureRect(sf::IntRect textureRect);
 			virtual void setScale(float xScale, float yScale);
+			virtual void setScale(float width, float height, float tileWidth, float tileHeight);
 			virtual void setPosition(sf::Vector2f position);
 			virtual void setRotation(float angle);
 			virtual void setOriginAtCentre();
 			virtual void setImageAlpha(float alpha);
 			virtual void setCentreAlinged();
+			
 			const virtual sf::Sprite& getSprite();
 
 

@@ -15,13 +15,16 @@ namespace Sound {
 			printf("Error loading button click file");
 		}
 		if (!bufferBulletFire.loadFromFile(Config::bulletFireSoundPath)) {
-			printf("Error loading button click file");
+			printf("Error loading bullet fire file");
 		}
 		if (!bufferPowerupEnabled.loadFromFile(Config::powerupEnabledSoundPath)) {
-			printf("Error loading button click file");
+			printf("Error loading powerup enable file");
 		}
 		if (!bufferPowerupDisabled.loadFromFile(Config::powerupDisabledSoundPath)) {
-			printf("Error loading button click file");
+			printf("Error loading powerup disable file");
+		}
+		if (!bufferDestroySoundBuffer.loadFromFile(Config::explosionSoundPath)) {
+			printf("Error loading explsoion file");
 		}
 		
 	}
@@ -45,6 +48,10 @@ namespace Sound {
 			powerupSoundEffect.setBuffer(bufferPowerupDisabled);
 			powerupSoundEffect.play();
 			break;
+		case SoundType::EXPLOSION:
+			destroySoundEffect.setBuffer(bufferDestroySoundBuffer);
+			destroySoundEffect.play();
+			break;
 		default:
 			printf("Invalid Source Type");
 			break;
@@ -52,7 +59,7 @@ namespace Sound {
 
 		
 	}
-	void SoundService::playBackroundMusic()
+	void SoundService::playBackgroundMusic()
 	{
 		
 			backgroundMusic.setVolume(volume);

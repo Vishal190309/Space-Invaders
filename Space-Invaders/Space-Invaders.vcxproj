@@ -132,6 +132,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\AnimationSystem\AnimationService.cpp" />
+    <ClCompile Include="Source\AnimationSystem\AnimationSystem.cpp" />
     <ClCompile Include="Source\Bullet\BulletConfig.cpp" />
     <ClCompile Include="Source\Bullet\BulletService.cpp" />
     <ClCompile Include="Source\Bullet\Controllers\ForstBulletController.cpp" />
@@ -179,6 +181,8 @@
     <ClCompile Include="Source\Time\TimeService.cpp" />
     <ClCompile Include="Source\UI\GameplayUI\GameplayUIController.cpp" />
     <ClCompile Include="Source\UI\MainMenu\MainMenuUIController.cpp" />
+    <ClCompile Include="Source\UI\SplashScreenUI\SplashScreenUIController.cpp" />
+    <ClCompile Include="Source\UI\UIElement\AnimatedImageView.cpp" />
     <ClCompile Include="Source\UI\UIElement\ButtonView.cpp" />
     <ClCompile Include="Source\UI\UIElement\ImageView.cpp" />
     <ClCompile Include="Source\UI\UIElement\TextView.cpp" />
@@ -186,6 +190,10 @@
     <ClCompile Include="Source\UI\UIService.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\AnimationSystem\AnimationService.h" />
+    <ClInclude Include="Header\AnimationSystem\AnimationSystem.h" />
+    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfig.h" />
+    <ClInclude Include="Header\AnimationSystem\AnimationSystemConfigData.h" />
     <ClInclude Include="Header\Bullet\BulletConfig.h" />
     <ClInclude Include="Header\Bullet\BulletController.h" />
     <ClInclude Include="Header\Bullet\BulletModel.h" />
@@ -234,10 +242,12 @@
     <ClInclude Include="Header\Powerups\PowerupView.h" />
     <ClInclude Include="Header\Projectile\IProjectile.h" />
     <ClInclude Include="Header\Sound\SoundService.h" />
+    <ClInclude Include="Header\UI\SplashScreenUI\SplashScreenUIController.h" />
     <ClInclude Include="Header\Time\TimeService.h" />
     <ClInclude Include="Header\UI\Gameplay\GameplayUIController.h" />
     <ClInclude Include="Header\UI\Interface\IUIController.h" />
     <ClInclude Include="Header\UI\MainMenu\MainMenuUIController.h" />
+    <ClInclude Include="Header\UI\UIElement\AnimatedImageView.h" />
     <ClInclude Include="Header\UI\UIElement\ButtonView.h" />
     <ClInclude Include="Header\UI\UIElement\ImageView.h" />
     <ClInclude Include="Header\UI\UIElement\TextView.h" />

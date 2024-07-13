@@ -59,7 +59,7 @@ namespace UI
             instructionsButton->show();
             quitButton->show();
 
-            ServiceLocator::getInstance()->getSoundService()->playBackroundMusic();
+            ServiceLocator::getInstance()->getSoundService()->playBackgroundMusic();
         }
 
       
